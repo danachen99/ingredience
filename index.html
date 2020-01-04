@@ -14,63 +14,62 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="container" id="landing">
-      <div class="row">
-        <div class="col s7 offset-s5" id="test">
-          <h1>
-            Make your kitchen work for you.
-          </h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s7 offset-s5" id="test">
-          <h3>Find recipes suited to your needs. Filter by your available ingredients, dietary restrictions, and more!</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s7 offset-s5" id="test">
-          <a class="waves-effect waves-light btn-large scale-transition" id="button"><i class="material-icons left">local_dining</i>Find Recipes</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- WILL STILL NEED UPDATING - JUST TESTING ENTRANCE -->
-    <div class="container" id="options">
-      <div class="container">
+      <div  class="container" id="landing">
         <div class="row">
-            <div class="col s5 offset-s7" id="test">                
-                <h3> Do you have any intolerances?</h3>
-                <form action="#">
-                  <p>
-                    <label>
-                      <input type="checkbox"/>
-                      <span>Shellfish</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox"/>
-                      <span>Gluten</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox"/>
-                      <span>Dairy</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span>Peanuts</span>
-                    </label>
-                  </p>
-                </form>
-                <a class="waves-effect waves-light btn-large scale-transition" id="button"><i class="material-icons left">search</i>Search</a>
+          <div class="col l6 offset-l6" id="test">
+            <h1>
+              Make your kitchen work for you.
+            </h1>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col m6 offset-m6" id="test">
+              <h3>Find recipes suited to your needs. Filter by your available ingredients, dietary restrictions, and more!</h3>
             </div>
         </div>
-    </div>
-
+        <div class="row">
+          <div class="col l6 offset-l6" id="test">
+            <a class="waves-effect waves-light btn-large scale-transition" id="startbutton"><i class="material-icons left">local_dining</i>Find Recipes</a>
+          </div>
+        </div>
+      </div>
+  <!-- TODO - IMPLEMENT BACK BUTTONS, PROBABLY -->
+      <!-- WILL STILL NEED UPDATING - JUST TESTING ENTRANCE -->
+      <div class="container" id="options">
+          <div class="row">
+              <div class="col l6 offset-l6" id="test">                
+                  <h3> First, do you have any intolerances?</h3>
+                  <form action="#">
+                    <p>
+                      <label>
+                        <input type="checkbox"/>
+                        <span>Shellfish</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input type="checkbox"/>
+                        <span>Gluten</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input type="checkbox"/>
+                        <span>Dairy</span>
+                      </label>
+                    </p>  
+                    <p>
+                      <label>
+                        <input type="checkbox" />
+                        <span>Peanuts</span>
+                      </label>
+                    </p>
+                  </form>
+                  <a class="waves-effect waves-light btn-large scale-transition" id="nextbutton"><i class="material-icons left">arrow_forward</i>Next</a>
+              </div>
+          </div>
+      </div>
+ 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

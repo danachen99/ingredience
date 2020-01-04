@@ -32,15 +32,26 @@
 
 $("document").ready(function() {            
 
-  $( "#button" ).click(function() {
+  $( "#startbutton" ).click(function() {
     // Scroll landing page out of the way
     $("#landing").animate({
+      opacity: 0,
       bottom: "+=900",
     }, 600 );
     // Reveal options page and scroll into view
     $("#options").show();
     $("#options").animate({
-      bottom: "+=800",
+      bottom: "+=700",
     }, 600);
     })
+
+    $( "#nextbutton" ).click(function() {
+      // Scroll landing page out of the way
+      // Reveal options page and scroll into view
+      $("#options").animate({
+        opacity: 0,
+        bottom: "+=700",
+      }, 600);
+      })
   });
+
