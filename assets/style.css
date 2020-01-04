@@ -1,0 +1,65 @@
+/* 
+COLORS
+pink (terra cotta):  #E2665E
+green (russian green): #678164
+pale (banana mania): #F1E8B8
+orange (pink-orange): #FF9C54
+gray (black shadows): #BFB5AF
+
+*/
+
+
+.container{
+  position: relative;
+  margin-top: 10rem;
+}
+
+#options{
+  display:none;
+}
+
+body{
+  background-image: url(brooke-lark-08bOYnH_r_E-unsplash.jpg);
+  background-attachment: fixed;
+  height: 100%;
+  width: 100%;
+  color: #E2665E;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: fixed;
+} 
+
+#test{
+  text-align: center;
+}
+
+
+a{
+  background-color: #FF9C54 !important;
+}
+
+
+nav{
+  /* background-color: #2E0F15; */
+  color: #2E0F15;
+}
+
+
+span{
+  color: #E2665E;
+}
+
+
+/* nav{
+  background-color: #BFB5AF;
+  color: #F1E8B8;
+} */
+
+
+
+
+
+
+/* div{
+  height: 100%;
+} */
