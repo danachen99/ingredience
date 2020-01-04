@@ -8,10 +8,20 @@ gray (black shadows): #BFB5AF
 
 */
 
+.container{
+  position: relative;
+  margin-top: 10rem;
+}
 
+#options{
+  display:none;
+}
 
 body{
   background-image: url(brooke-lark-08bOYnH_r_E-unsplash.jpg);
+  background-attachment: fixed;
+  height: 100%;
+  width: 100%;
   color: #E2665E;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -20,6 +30,10 @@ body{
 
 #test{
   text-align: center;
+}
+
+a{
+  background-color: #FF9C54 !important;
 }
 
 nav{

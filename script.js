@@ -20,16 +20,29 @@
 //   console.log(response);
 // })
 
-var queryUrl = "https://api.spoonacular.com/food/products/search?query=yogurt"
-var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+// var queryUrl = "https://api.spoonacular.com/food/products/search?query=yogurt"
+// var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
 
-$.ajax({
-  url: queryUrl + "&apiKey=" + apiKey,
-  method: "GET"
-}).then(function(response){
-  console.log(response);
-})
+// $.ajax({
+//   url: queryUrl + "&apiKey=" + apiKey,
+//   method: "GET"
+// }).then(function(response){
+//   console.log(response);
+// })
 
+$("document").ready(function() {            
+
+  $( "#button" ).click(function() {
+    $("#landing").animate({
+      // opacity: 0,
+      bottom: "+=900",
+    }, 600 );
+    // $("#landing").hide();
+    // $("#options").show();
+  });
+  
+
+   });     
 // var queryUrl2 = "https://api.spoonacular.com/food/jokes/random"
 
 // $.ajax({
@@ -40,3 +53,4 @@ $.ajax({
 // })
 
 
+  
