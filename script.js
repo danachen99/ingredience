@@ -33,24 +33,14 @@
 $("document").ready(function() {            
 
   $( "#button" ).click(function() {
+    // Scroll landing page out of the way
     $("#landing").animate({
-      // opacity: 0,
       bottom: "+=900",
     }, 600 );
-    // $("#landing").hide();
-    // $("#options").show();
+    // Reveal options page and scroll into view
+    $("#options").show();
+    $("#options").animate({
+      bottom: "+=800",
+    }, 600);
+    })
   });
-  
-
-   });     
-// var queryUrl2 = "https://api.spoonacular.com/food/jokes/random"
-
-// $.ajax({
-//   url: queryUrl2 + "&apiKey=" + apiKey,
-//   method: "GET"
-// }).then(function(response){
-//   console.log(response);
-// })
-
-
-  
