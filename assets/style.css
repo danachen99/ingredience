@@ -5,7 +5,6 @@ green (russian green): #678164
 pale (banana mania): #F1E8B8
 orange (pink-orange): #FF9C54
 gray (black shadows): #BFB5AF
-
 */
 
 
@@ -18,6 +17,10 @@ gray (black shadows): #BFB5AF
   display:none;
 }
 
+#restrictionspage{
+  display:none;
+}
+
 body{
   background-image: url(brooke-lark-08bOYnH_r_E-unsplash.jpg);
   background-attachment: fixed;
@@ -25,11 +28,9 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  text-align: center;
 } 
 
-#test{
-  text-align: center;
-}
 
 
 a{
@@ -48,16 +49,3 @@ span{
 }
 
 
-/* nav{
-  background-color: #BFB5AF;
-  color: #F1E8B8;
-} */
-
-
-
-
-
-
-/* div{
-  height: 100%;
-} */
