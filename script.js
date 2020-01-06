@@ -99,6 +99,10 @@ $("document").ready(function() {
             opacity: 0,
             bottom: "+=400",
           }, 600);
+          $("#restrictionspage").show();
+          $("#restrictionspage").animate({
+            bottom: "+=1000",
+          }, 600);
           currentPage++;
       }
   }

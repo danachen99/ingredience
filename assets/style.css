@@ -21,31 +21,46 @@ gray (black shadows): #BFB5AF
   display:none;
 }
 
+.dietoption{
+  margin: 0rem 1.5rem;
+}
+
+hr{
+  color:#E2665E;
+  border: 3px solid #E2665E;
+}
+
+span{
+  font-size: 2.4rem !important;
+  color: #678164;
+}
+
+
+
+
+
 body{
   background-image: url(brooke-lark-08bOYnH_r_E-unsplash.jpg);
   background-attachment: fixed;
-  color: #E2665E;
+  color: #678164;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   text-align: center;
 } 
 
-
+p{
+  margin: 2.2rem 0rem;
+}
 
 a{
-  background-color: #FF9C54 !important;
+  background-color: #E2665E !important;
 }
 
 
 nav{
   /* background-color: #2E0F15; */
   color: #2E0F15;
-}
-
-
-span{
-  color: #E2665E;
 }
 
 

@@ -35,43 +35,70 @@
       <div class="container" id="options">
           <div class="row">
               <div class="col l6 offset-l6 m6 offset-m6 s6 offset-s6">                
-                  <h3> First, do you have any intolerances?</h3>
+                  <h2> First, do you have any intolerances?</h2>
+                  <hr>
                   <form action="#">
-                    <p>
-                      <label>
-                        <input type="checkbox" id="check0"/>
-                        <span>Shellfish</span>
-                      </label>
-                    </p>
-                    <p>
-                      <label>
-                        <input type="checkbox" id="check1"/>
-                        <span>Gluten</span>
-                      </label>
-                    </p>
-                    <p>
-                      <label>
+                    <div class="row">
+                        <label class="dietoption">
+                          <input type="checkbox" id="check0"/>
+                          <span>Shellfish</span>
+                        </label>
+                        <label class="dietoption">
+                          <input type="checkbox" id="check1"/>
+                          <span>Gluten</span>
+                        </label>
+                    </div>
+                    <div class="row">
+                      <label class="dietoption">
                         <input type="checkbox" id="check2"/>
                         <span>Dairy</span>
                       </label>
-                    </p>  
-                    <p>
-                      <label>
+                      <label class="dietoption">
                         <input type="checkbox" id="check3"/>
                         <span>Peanuts</span>
                       </label>
-                    </p>
+                  </div>
                   </form>
                   <a class="waves-effect waves-light btn-large scale-transition" id="backbutton"><i class="material-icons left">arrow_back</i>Back</a>
                   <a class="waves-effect waves-light btn-large scale-transition" id="nextbutton"><i class="material-icons left">arrow_forward</i>Next</a>
               </div>
           </div>
       </div>
-      <div class="container">
+      <div class="container" id="restrictionspage">
         <div class="row">
-          <div class="col l6 offset-l6 m6 offset-m6 s6 offset-s6" id="restrictionspage"><h3>Great, we'll be sure to omit anything that has those items.</h3></div>
+          <div class="col l6 offset-l6 m6 offset-m6 s6 offset-s6" ><h3>Great, we'll be sure to omit anything that has those items.</h3></div>
+          <div class="col l6 offset-l6 m6 offset-m6 s6 offset-s6"><h3>Next, do you adhere to any of the below diets?</h3><hr></div>
+            <div class="col l6 offset-l6 m6 offset-m6 s6 offset-s6">
+              <div class="row">
+                <div class="col s12 m12">
+                    <form action="#">
+                      <div class="row">
+                          <label class="dietoption">
+                            <input type="checkbox" id="dietcheck0"/>
+                            <span>Vegan</span>
+                          </label>
+                          <label class="dietoption">
+                            <input type="checkbox" id="dietcheck1"/>
+                            <span>Vegetarian</span>
+                          </label>
+                      </div>
+                      <div class="row">
+                        <label class="dietoption">
+                          <input type="checkbox" id="dietcheck0"/>
+                          <span>Keto</span>
+                        </label>
+                        <label class="dietoption">
+                          <input type="checkbox" id="dietcheck1"/>
+                          <span>Paleo</span>
+                        </label>
+                    </div>
+                    </form>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
+  
  
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
