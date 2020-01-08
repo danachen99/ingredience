@@ -1,4 +1,85 @@
-var searchedItems = [];
+var currentPage = 0;
+    
+$("document").ready(function() {     
+//   Function to move forward from initial landing page 
+  function moveLanding(){
+    $("#landing").addClass('animated fadeOutUp faster');  
+    $("#landing").on('animationend', function(){
+        $("#landing").hide();
+    });
+    setTimeout(function(){
+        $("#options").show().addClass('animated fadeInUp faster');
+    }, 500)
+
+    
+    // $("#options").addClass('animated fadeInUp');
+  }
+
+  $('.chips').chips();
+
+  function moveForward(){
+      currentPage++;
+      if(currentPage == 1){
+        $("#landing").addClass('animated fadeOutUp faster');  
+        $("#landing").on('animationend', function(){
+            $("#landing").hide();
+            $("#landing").removeClass('animated fadeOutUp faster');
+        });
+        setTimeout(function(){
+            $("#options").show().addClass('animated fadeInUp faster');
+        }, 500)
+      }
+      else if(currentPage == 2){
+    $("#options").addClass('animated fadeOutUp');
+    $("#options").on('animationend', function(){
+        $("#options").hide();
+        $("#options").removeClass('animated fadeOutUp faster');
+    });
+    setTimeout(function(){
+    $("#restrictionspage").show().addClass('animated fadeInUp faster');
+    }, 500);
+      } else if (currentPage == 3){
+        $("#restrictionspage").addClass('animated fadeOutUp');
+        $("#restrictionspage").on('animationend', function(){
+            $("#restrictionspage").hide();
+            $("#restrictionspage").removeClass('animated fadeOutUp faster');
+      })
+      setTimeout(function(){
+        $("#ingredientspage").show().addClass('animated fadeInUp faster');
+        }, 500);
+        
+    } 
+  }
+
+//   Function to step back in page content -- THIS IS NOT COMPLETE DON'T JUDGE ME 
+  function moveBack(){
+      if(currentPage == 3){
+        $("#ingredientspage").removeClass('animated fadeInUp faster').addClass('animated fadeOutDown faster');
+        currentPage--;
+        $("#restrictionspage").addClass('animated fadeInDown faster');
+      } else if (currentPage == 2){
+          $("#restrictionspage").removeClass('animated fadeInUp faster').addClass('animated fadeOutDown faster');
+      } else if (currentPage == 1){
+        $("#options").removeClass('animated fadeInUp faster').addClass('animated fadeOutDown faster');
+      }
+    }
+  
+    //   Page movement event handlers
+   $("#startbutton").on("click", function(){
+        moveForward();
+    })
+    $(".backbutton").click(function(){
+        moveBack();
+  })
+    $(".nextbutton").click(function(){
+        moveForward();
+        // $(".nextbutton").unbind("click");
+    })
+})
+
+
+var intolerances = "";
+
 
 var inputItem;
 $("#inputBtn").on("click", function(event) {
@@ -39,6 +120,21 @@ function Ajax() {
         }
     });
 }
+
+// $(".nextbutton").on("click", function() {
+//     checkIntolerances();
+//     var queryUrl = "https://api.spoonacular.com/recipes/random?number=1&tags=vegetarian,dessert";
+//     var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+//     //var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+//     $.ajax({
+//         url: queryUrl + "&apiKey=" + apiKey,
+//         method: "GET"
+//     }).then(function(response) {
+//         console.log(response.recipes[0]);
+//     });
+// });
+
+
 
 /*
         function AJAX2() {
