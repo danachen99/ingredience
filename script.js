@@ -12,11 +12,7 @@ $("document").ready(function() {
         .show()
         .addClass("animated fadeInUp faster");
     }, 500);
-
-    // $("#options").addClass('animated fadeInUp');
   }
-
-  $(".chips").chips();
 
   function moveForward() {
     currentPage++;
@@ -79,13 +75,15 @@ $("document").ready(function() {
   $("#startbutton").on("click", function() {
     moveForward();
   });
+
   $(".backbutton").click(function() {
     moveBack();
   });
+
   $(".nextbutton").click(function() {
     moveForward();
-    // $(".nextbutton").unbind("click");
   });
+
   $("#submitingredients").click(function() {
     $("#ingredientspage")
       .show()
@@ -97,58 +95,55 @@ $("document").ready(function() {
       $("#carousel")
         .show()
         .addClass("animated fadeInUp faster");
-      $(".carousel").carousel();
-    }, 500);
+      }, 500);
+     
+    checkIntolerances();
   });
 });
+
+$(".chips").chips();
+
+// Takes response from getRecipeWithIntolerances() and creates a card for carousel for each item
+function generateCarousel(recipes) {
+    // $(".carousel").carousel({
+    //     fullWidth: true
+    //   });
+  for (var i = 0; i < recipes.results.length; i++) {
+    var recipeImg = "https://spoonacular.com/recipeImages/" + recipes.results[i].image;
+    $(".carousel").append("<a class='carousel-item'>").carousel({
+        fullWidth:true
+    });
+    $(".carousel-item").append("<img src=" + recipeImg + ">");
+
+  }
+}
 
 var intolerances = "";
 
 function checkIntolerances() {
-  event.preventDefault();
-  $('input[type="checkbox"]').on("change", function() {
-    var shellfish = $("#check0").prop("checked");
-    var gluten = $("#check1").prop("checked");
-    var dairy = $("#check2").prop("checked");
-    var peanuts = $("#check3").prop("checked");
-    //$("#inputSearch").val()
-    //var checkMe = [shellfish, gluten, dairy, peanuts];
-    // for (var i = 0; i < 5; i++) {
-    // console.log(checkMe[i]);
-    // }
-    if (!shellfish && !gluten && !dairy && !peanuts) {
-      intolerances = "";
-    } else if (shellfish && gluten && dairy && peanuts) {
-      intolerances = "shellfish,eggs,gluten,dairy,peanuts";
-    } else if (shellfish && gluten && dairy && !peanuts) {
-      intolerances = "shellfish,gluten,dairy";
-    } else if (shellfish && gluten && !dairy && !peanuts) {
-      intolerances = "shellfish,gluten";
-    } else if (shellfish) {
-      intolerances = "shellfish";
-    } else if (gluten) {
-      intolerances = "gluten";
-    } else if (dairy) {
-      intolerances = "dairy";
-    } else if (peanuts) {
-      intolerances = "peanuts";
-    } else if (!shellfish && gluten && dairy && !peanuts) {
-      intolerances = "gluten,dairy";
-    } else if (!shellfish && gluten && dairy && peanuts) {
-      intolerances = "gluten,dairy,peanuts";
+  var inputs = $('input[type="checkbox"]');
+  for (var i = 0; i < inputs.length; i++) {
+    if (inputs[i].type === "checkbox" && inputs[i].checked === true) {
+      intolerances =
+        intolerances + inputs[i].nextElementSibling.textContent + ",";
+      updatedIntolerances = intolerances.slice(0, -1);
     }
-    console.log("..." + intolerances);
+  }
+  getRecipeWithIntolerances(); // This will probably move somewhere later, when all pieces are coded properly we'll have to figure out best way to chain these
+}
+
+function getRecipeWithIntolerances() {
+  var queryUrl =
+    "https://api.spoonacular.com/recipes/search?query=pepper&number=5&intolerances=" +
+    updatedIntolerances;
+  // var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+  var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+  $.ajax({
+    url: queryUrl + "&apiKey=" + apiKey,
+    method: "GET"
+  }).then(function(response) {
+    console.log(this.url);
+    console.log(response);
+    generateCarousel(response);
   });
 }
-// $(".nextbutton").on("click", function() {
-//     checkIntolerances();
-//     var queryUrl = "https://api.spoonacular.com/recipes/random?number=1&tags=vegetarian,dessert";
-//     var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
-//     //var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
-//     $.ajax({
-//         url: queryUrl + "&apiKey=" + apiKey,
-//         method: "GET"
-//     }).then(function(response) {
-//         console.log(response.recipes[0]);
-//     });
-// });
