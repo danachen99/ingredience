@@ -51,7 +51,7 @@ $("document").ready(function() {
     } 
   }
 
-//   Function to step back in page content
+//   Function to step back in page content -- THIS IS NOT COMPLETE DON'T JUDGE ME 
   function moveBack(){
       if(currentPage == 3){
         $("#ingredientspage").removeClass('animated fadeInUp faster').addClass('animated fadeOutDown faster');
