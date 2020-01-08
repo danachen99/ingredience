@@ -79,6 +79,7 @@ $("document").ready(function() {
 
 
 var intolerances = "";
+var updatedIntolerances = "";
 checkIntolerances();
 
 function checkIntolerances() {
@@ -92,10 +93,11 @@ function checkIntolerances() {
                 // } else {
                 //     console.log("REMOVE")
                 // }
-                intolerances += this.value;
-                console.log(intolerances);
+                intolerances = intolerances + this.value + ",";
+                updatedIntolerances = intolerances.slice(0, -1);
+                console.log(updatedIntolerances);
                 //return intolerances;
-                getRecipeWithIntolerances();
+                //getRecipeWithIntolerances();
             }
         }
     }
@@ -123,7 +125,7 @@ $("#button").on("click", function() {
 $("#button1").on("click", getRecipeWithIntolerances);
 
 function getRecipeWithIntolerances() {
-    var queryUrl = "https://api.spoonacular.com/recipes/search?query=cheese&number=2&intolerances=" + intolerances;
+    var queryUrl = "https://api.spoonacular.com/recipes/search?query=cheese&number=2&intolerances=" + updatedIntolerances;
     var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
     //var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
     $.ajax({
