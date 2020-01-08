@@ -25,6 +25,10 @@ gray (black shadows): #BFB5AF
   display: none;
 }
 
+#carousel{
+  display: none;
+}
+
 .dietoption {
   margin: 0rem 1.5rem;
 }
