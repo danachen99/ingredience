@@ -1,7 +1,7 @@
 var searchedItems = [];
 
 var inputItem;
-$("#inputBtn").on("click", function(event) {
+$("#inputBtn").on("click", function (event) {
     event.preventDefault();
     /*
     clearField();
@@ -18,46 +18,44 @@ $("#inputBtn").on("click", function(event) {
 function Ajax() {
     var inputItem = $("#inputSearch").val().trim().toLowerCase();
     var ingredientDomainName = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=";
-    var queryUrl = ingredientDomainName + searchedItems[0] + "instructionsRequired=true" + "&number=5";
-    var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
-    /*
-     var queryUrl = ingredientDomainName + "chicken" + "instructionsRequired=true" + "&number=10";
-     //"apples,+flour,+sugar" 
-    */
-    /*
-        /*
-        var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
-        */
+    var queryUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + searchedItems[0] + "&number=2";
+    //ingredientDomainName + searchedItems[0] + "instructionsRequired=true" + "&number=2";
+    //var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+    //var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+    var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
 
     $.ajax({
         url: queryUrl + "&apiKey=" + apiKey,
         method: "GET"
-    }).then(function(response) {
+    }).then(function (response) {
         console.log(response);
-        for (var i = 0;; i++) {
-            console.log(response[i].title);
+        for (var i = 0; i<response.length; i++) {
+            var responseName = response[i].title;
+            console.log(responseName);
+            var newDiv = $("<div>");
+            var newP = $("<p>");
+            var hr = $("<hr>");
+            newP.text(responseName);
+            newDiv.append(newP);
+            newDiv.append(hr);
+            $(".resultsDisplayDiv").prepend(newDiv);  
         }
     });
 }
+            
+function AJAX2() {            
+    var recipeUrl = "https://api.spoonacular.com/recipes/1011446/analyzedInstructions?";
+    var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
 
-/*
-        function AJAX2() {
-            var mealPlanDomainName = "https://api.spoonacular.com/recipes/mealplans/generate";
-            var mealPlanUrl = "https://api.spoonacular.com/recipes/mealplans/generate?timeFrame=day&diet=paleo";
-            var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
-
-            $.ajax({
-                url: mealPlanUrl + "&apiKey=" + apiKey,
-                method: "GET"
-            }).then(function(response) {
-                console.log(response);
-            });
+    $.ajax({
+        url: recipeUrl + "&apiKey=" + apiKey,
+        method: "GET"
+    }).then(function(response) {
+        for (var i=0;; i++) {
+            console.log(response[0].steps[i]["step"]);
         }
-*/
-function clearField() {
-    $("#results").empty();
+    });
 }
-$("#clear").on("click", clearField);
 
 
 
