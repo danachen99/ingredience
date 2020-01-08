@@ -1,85 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css" />
 
     <title>Document</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container" id="landing">
-      <div class="row">
-        <div class="col s7 offset-s5" id="test">
-          <h1>
-            Make your kitchen work for you.
-          </h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s7 offset-s5" id="test">
-          <h3>Find recipes suited to your needs. Filter by your available ingredients, dietary restrictions, and more!</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s7 offset-s5" id="test">
-          <a class="waves-effect waves-light btn-large scale-transition" id="button"><i class="material-icons left">local_dining</i>Find Recipes</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- WILL STILL NEED UPDATING - JUST TESTING ENTRANCE -->
-    <div class="container" id="options">
-      <div class="container">
         <div class="row">
-            <div class="col s5 offset-s7" id="test">                
-                <h3> Do you have any intolerances?</h3>
-                <form action="#">
-                  <p>
-                    <label>
-                      <input type="checkbox"/>
-                      <span>Shellfish</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox"/>
-                      <span>Gluten</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox"/>
-                      <span>Dairy</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span>Peanuts</span>
-                    </label>
-                  </p>
-                </form>
-                <a class="waves-effect waves-light btn-large scale-transition" id="button"><i class="material-icons left">search</i>Search</a>
-
+            <div class="col s7 offset-s5" id="test">
+                <h1>
+                    Make your kitchen work for you.
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s7 offset-s5" id="test">
+                <h3>Find recipes suited to your needs. Filter by your available ingredients, dietary restrictions, and more!</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s7 offset-s5" id="test">
+                <a class="waves-effect waves-light btn-large scale-transition" id="button"><i class="material-icons left">local_dining</i>Find Recipes</a>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- WILL STILL NEED UPDATING - JUST TESTING ENTRANCE -->
+    <div class="container" id="options">
+        <div class="container">
+            <div class="row">
+                <div class="col s5 offset-s7" id="test">
+                    <h3> Do you have any intolerances?</h3>
+                    <form action="#">
+                        <p>
+                            <label>
+                      <input type="checkbox" value="shellfish" id="checkme"/>
+                      <span>Shellfish</span>
+                    </label>
+                        </p>
+                        <p>
+                            <label>
+                      <input type="checkbox" value="gluten" id="checkme"/>
+                      <span>Gluten</span>
+                    </label>
+                        </p>
+                        <p>
+                            <label>
+                      <input type="checkbox" value="dairy" id="checkme"/>
+                      <span>Dairy</span>
+                    </label>
+                        </p>
+                        <p>
+                            <label>
+                      <input type="checkbox" value="peanuts" id="checkme"/>
+                      <span>Peanuts</span>
+                    </label>
+                        </p>
+                    </form>
+                    <a class="waves-effect waves-light btn-large scale-transition" id="button"><i class="material-icons left">search</i>Search</a>
 
-    <script src="script.js"></script>
-  </body>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <script src="script.js"></script>
+</body>
+
 </html>
 
 <!-- <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@brookelark?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Brooke Lark"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Brooke Lark</span></a> -->
-
