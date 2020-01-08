@@ -78,9 +78,10 @@ $("document").ready(function() {
 
 
 
+var intolerances = "";
+checkIntolerances();
 
 function checkIntolerances() {
-    var intolerances = "";
     var inputs = $('input[type="checkbox"]');
     //var checkMe = $("#checkme");
     for (var i = 0; i < inputs.length; i++) {
@@ -93,13 +94,15 @@ function checkIntolerances() {
                 // }
                 intolerances += this.value;
                 console.log(intolerances);
+                //return intolerances;
+                getRecipeWithIntolerances();
             }
-
         }
     }
 }
 
 //get random recipe
+/*
 $("#button").on("click", function() {
     checkIntolerances();
     var queryUrl = "https://api.spoonacular.com/recipes/random?number=1&tags=vegetarian,dessert";
@@ -115,4 +118,20 @@ $("#button").on("click", function() {
             //console.log(response.recipes[0].analyzedInstructions[0].steps[i].step);
         }
     });
-});
+});*/
+
+$("#button1").on("click", getRecipeWithIntolerances);
+
+function getRecipeWithIntolerances() {
+    var queryUrl = "https://api.spoonacular.com/recipes/search?query=cheese&number=2&intolerances=" + intolerances;
+    var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+    //var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+    $.ajax({
+        url: queryUrl + "&apiKey=" + apiKey,
+        method: "GET"
+    }).then(function(response) {
+        console.log(this.url);
+        console.log(response);
+
+    });
+}
