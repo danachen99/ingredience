@@ -12,6 +12,7 @@ gray (black shadows): #BFB5AF
   margin-top: 10rem;
 }
 
+
 #options {
   display: none;
   opacity: 0;
@@ -28,6 +29,7 @@ gray (black shadows): #BFB5AF
 .dietoption {
   margin: 0rem 1.5rem;
 }
+
 
 hr {
   color: #e2665e;
