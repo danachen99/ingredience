@@ -23,6 +23,7 @@ $("document").ready(function() {
         $("#landing").addClass('animated fadeOutUp faster');  
         $("#landing").on('animationend', function(){
             $("#landing").hide();
+            $("#landing").removeClass('animated fadeOutUp faster');
         });
         setTimeout(function(){
             $("#options").show().addClass('animated fadeInUp faster');
@@ -32,6 +33,7 @@ $("document").ready(function() {
     $("#options").addClass('animated fadeOutUp');
     $("#options").on('animationend', function(){
         $("#options").hide();
+        $("#options").removeClass('animated fadeOutUp faster');
     });
     setTimeout(function(){
     $("#restrictionspage").show().addClass('animated fadeInUp faster');
@@ -40,21 +42,30 @@ $("document").ready(function() {
         $("#restrictionspage").addClass('animated fadeOutUp');
         $("#restrictionspage").on('animationend', function(){
             $("#restrictionspage").hide();
+            $("#restrictionspage").removeClass('animated fadeOutUp faster');
       })
       setTimeout(function(){
         $("#ingredientspage").show().addClass('animated fadeInUp faster');
         }, 500);
+        
     } 
   }
 
 //   Function to step back in page content
   function moveBack(){
-      
+      if(currentPage == 3){
+        $("#ingredientspage").removeClass('animated fadeInUp faster').addClass('animated fadeOutDown faster');
+        currentPage--;
+        $("#restrictionspage").addClass('animated fadeInDown faster');
+      } else if (currentPage == 2){
+          $("#restrictionspage").removeClass('animated fadeInUp faster').addClass('animated fadeOutDown faster');
+      } else if (currentPage == 1){
+        $("#options").removeClass('animated fadeInUp faster').addClass('animated fadeOutDown faster');
+      }
     }
   
     //   Page movement event handlers
    $("#startbutton").on("click", function(){
-        // moveLanding();
         moveForward();
     })
     $(".backbutton").click(function(){
