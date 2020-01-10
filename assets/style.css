@@ -7,6 +7,10 @@ orange (pink-orange): #FF9C54
 gray (black shadows): #BFB5AF
 */
 
+.container {
+  position: relative;
+  margin-top: 10rem;
+}
 
 #modal{
   display:none;
@@ -64,6 +68,7 @@ p {
 a {
   background-color: #e2665e !important;
 }
+
 
 nav {
   /* background-color: #2E0F15; */

@@ -1,6 +1,5 @@
 var currentPage = 0;
 
-
 $("document").ready(function() {
   
 
@@ -188,3 +187,4 @@ function getRecipeWithIntolerances() {
   });
   
 }
+
