@@ -7,6 +7,11 @@ orange (pink-orange): #FF9C54
 gray (black shadows): #BFB5AF
 */
 
+.container {
+  position: relative;
+  margin-top: 10rem;
+}
+
 
 
 .container {
@@ -25,11 +30,29 @@ gray (black shadows): #BFB5AF
 
 #ingredientspage {
   display: none;
+=======
+#options {
+  display: none;
+  opacity: 0;
+}
+
+#restrictionspage {
+  display: none;
+}
+
+#ingredientspage {
+  display: none;
+}
+
+.dietoption {
+  margin: 0rem 1.5rem;
+
 }
 
 #carousel{
   display: none;
 }
+
 
 .dietoption {
   margin: 0rem 1.5rem;
@@ -62,6 +85,35 @@ p {
 a {
   background-color: #e2665e !important;
 }
+
+hr {
+  color: #e2665e;
+  border: 3px solid #e2665e;
+}
+
+span {
+  font-size: 2.4rem !important;
+  color: #678164;
+}
+
+body {
+  background-image: url(brooke-lark-08bOYnH_r_E-unsplash.jpg);
+  background-attachment: fixed;
+  color: #678164;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+}
+
+p {
+  margin: 2.2rem 0rem;
+}
+
+a {
+  background-color: #e2665e !important;
+}
+
 
 nav {
   /* background-color: #2E0F15; */
