@@ -7,9 +7,30 @@ orange (pink-orange): #FF9C54
 gray (black shadows): #BFB5AF
 */
 
+h2{
+  margin-top: none;
+}
 
-#modal{
-  display:none;
+.recipecardhead{
+  color: #F1E8B8;
+  font-size: 1.4rem !important;
+}
+.cardimg{
+  opacity:1;
+}
+
+img {
+  height: 100%;
+  border-radius: 0px 0px 14px 14px;
+}
+
+.carousel-slider {
+  border-radius: 14px;
+  box-shadow: 6px 6px 4px 2px #bfb5af;
+}
+
+#modal {
+  display: none;
 }
 .container {
   position: relative;
@@ -21,6 +42,20 @@ gray (black shadows): #BFB5AF
   opacity: 0;
 }
 
+.caritemwrapper{
+background-color: #F1E8B8;
+}
+
+.caritemwrapper:hover img{
+opacity: 0.5;
+transition: .5s;
+}
+
+#optionswrap {
+  border: 4px dotted #ff9c54;
+  padding: 2em;
+}
+
 #restrictionspage {
   display: none;
 }
@@ -29,7 +64,7 @@ gray (black shadows): #BFB5AF
   display: none;
 }
 
-#carousel{
+#carousel {
   display: none;
 }
 
@@ -49,23 +84,33 @@ span {
 
 body {
   background-image: url(brooke-lark-08bOYnH_r_E-unsplash.jpg);
-  background-attachment: fixed;
-  color: #678164;
-  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   text-align: center;
+  color: #678164;
 }
-
-p {
+/* p {
   margin: 2.2rem 0rem;
-}
+} */
 
 a {
   background-color: #e2665e !important;
 }
 
+a.carousel-item{
+  background-color: #678164 !important;
+}
+
 nav {
   /* background-color: #2E0F15; */
   color: #2e0f15;
+}
+
+hr{
+  margin-bottom: 2em;
 }

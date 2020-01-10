@@ -1,3 +1,4 @@
+// ! CREATE STARTOVER AND GETMORERECIPES FUNCTIONS
 var currentPage = 0;
 
 
@@ -139,12 +140,14 @@ function generateCarousel(recipes) {
   for (var i = 0; i < recipes.results.length; i++) {
     recipeUrl = "https://api.spoonacular.com/recipes/" + recipes.results[i].id + "/analyzedInstructions"
     console.log(recipeUrl);
-    $(".carousel").append("<a href='" + recipeUrl + "' class='carousel-item' id='carousel" + i +"'>");  
+    $(".carousel").append("<div class='caritemwrapper'><a href='" + recipeUrl + "' class='carousel-item' id='carousel" + i +"'></div>");  
     recipeImgArray.push("https://spoonacular.com/recipeImages/" + recipes.results[i].image);
   }
 
   for (var i = 0; i< recipes.results.length; i++){
-    $("#carousel" + i).append("<img src=" + recipeImgArray[i] + ">");
+    $("#carousel" + i).append("<p class='recipecardhead'>" + recipes.results[i].title + "</p><img src=" + recipeImgArray[i] + ">");
+
+
   }
 
   $(".carousel.carousel-slider").carousel({
