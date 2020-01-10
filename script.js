@@ -1,18 +1,22 @@
 var currentPage = 0;
 
+
 $("document").ready(function() {
+  
+
+
   //   Function to move forward from initial landing page
-  function moveLanding() {
-    $("#landing").addClass("animated fadeOutUp faster");
-    $("#landing").on("animationend", function() {
-      $("#landing").hide();
-    });
-    setTimeout(function() {
-      $("#options")
-        .show()
-        .addClass("animated fadeInUp faster");
-    }, 500);
-  }
+  // function moveLanding() {
+  //   $("#landing").addClass("animated fadeOutUp faster");
+  //   $("#landing").on("animationend", function() {
+  //     $("#landing").hide();
+  //   });
+  //   setTimeout(function() {
+  //     $("#options")
+  //       .show()
+  //       .addClass("animated fadeInUp faster");
+  //   }, 500);
+  // }
 
   function moveForward() {
     currentPage++;
@@ -27,6 +31,7 @@ $("document").ready(function() {
           .show()
           .addClass("animated fadeInUp faster");
       }, 500);
+      return
     } else if (currentPage == 2) {
       $("#options").addClass("animated fadeOutUp");
       $("#options").on("animationend", function() {
@@ -38,6 +43,7 @@ $("document").ready(function() {
           .show()
           .addClass("animated fadeInUp faster");
       }, 500);
+      return
     } else if (currentPage == 3) {
       $("#restrictionspage").addClass("animated fadeOutUp");
       $("#restrictionspage").on("animationend", function() {
@@ -49,6 +55,7 @@ $("document").ready(function() {
           .show()
           .addClass("animated fadeInUp faster");
       }, 500);
+      return
     }
   }
 
@@ -57,17 +64,21 @@ $("document").ready(function() {
     if (currentPage == 3) {
       $("#ingredientspage")
         .removeClass("animated fadeInUp faster")
-        .addClass("animated fadeOutDown faster");
-      currentPage--;
-      $("#restrictionspage").addClass("animated fadeInDown faster");
+        .addClass("animated fadeOutDown faster")
+        .hide();
+      $("#restrictionspage").show();
+      $("#restrictionspage").addClass("animated fadeInDown");
+      return
     } else if (currentPage == 2) {
-      $("#restrictionspage")
-        .removeClass("animated fadeInUp faster")
-        .addClass("animated fadeOutDown faster");
+      return
+      // $("#restrictionspage")
+      //   .removeClass("animated fadeInUp faster")
+      //   .addClass("animated fadeOutDown faster");
     } else if (currentPage == 1) {
       $("#options")
         .removeClass("animated fadeInUp faster")
         .addClass("animated fadeOutDown faster");
+        return
     }
   }
 
@@ -96,27 +107,41 @@ $("document").ready(function() {
         .show()
         .addClass("animated fadeInUp faster");
       }, 500);
-     
     checkIntolerances();
   });
+
+  $(".carousel-item").on("click", function(){
+    
+  })
+  
 });
+
+
+
 
 $(".chips").chips();
 
 // Takes response from getRecipeWithIntolerances() and creates a card for carousel for each item
 function generateCarousel(recipes) {
-    // $(".carousel").carousel({
-    //     fullWidth: true
-    //   });
+  
+  var recipeImgArray = [];
+  var recipeUrl = "";
   for (var i = 0; i < recipes.results.length; i++) {
-    var recipeImg = "https://spoonacular.com/recipeImages/" + recipes.results[i].image;
-    $(".carousel").append("<a class='carousel-item'>").carousel({
-        fullWidth:true
-    });
-    $(".carousel-item").append("<img src=" + recipeImg + ">");
-
+    recipeUrl = "https://api.spoonacular.com/recipes/" + recipes.results[i].id + "/analyzedInstructions?"
+    console.log(recipeUrl);
+    $(".carousel").append("<a href='" + recipeUrl + "' class='carousel-item' id='carousel" + i +"'>");  
+    recipeImgArray.push("https://spoonacular.com/recipeImages/" + recipes.results[i].image);
   }
+
+  for (var i = 0; i< recipes.results.length; i++){
+    $("#carousel" + i).append("<img src=" + recipeImgArray[i] + ">");
+  }
+
+  $(".carousel.carousel-slider").carousel({
+    fullWidth: true
+  });
 }
+
 
 var intolerances = "";
 
@@ -144,6 +169,12 @@ function getRecipeWithIntolerances() {
   }).then(function(response) {
     console.log(this.url);
     console.log(response);
+    console.log(response.results[0].id)
+    if(response.length == 0){
+      alert('nada');
+    } else {
     generateCarousel(response);
+    }
   });
+  
 }
