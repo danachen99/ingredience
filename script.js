@@ -111,7 +111,17 @@ $("document").ready(function() {
   });
 
   $(".carousel-item").on("click", function(){
-    
+    var recipeUrl = $(this).attr("href");
+    console.log(recipeUrl);
+    // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+    var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+    $.ajax({
+      url: recipeUrl + "&apiKey=" + apiKey,
+      method: "GET"
+    }).then(function(response){
+      $("#modal").show();
+      $(".modal-content").append(response);
+    })
   })
   
 });
@@ -127,7 +137,7 @@ function generateCarousel(recipes) {
   var recipeImgArray = [];
   var recipeUrl = "";
   for (var i = 0; i < recipes.results.length; i++) {
-    recipeUrl = "https://api.spoonacular.com/recipes/" + recipes.results[i].id + "/analyzedInstructions?"
+    recipeUrl = "https://api.spoonacular.com/recipes/" + recipes.results[i].id + "/analyzedInstructions"
     console.log(recipeUrl);
     $(".carousel").append("<a href='" + recipeUrl + "' class='carousel-item' id='carousel" + i +"'>");  
     recipeImgArray.push("https://spoonacular.com/recipeImages/" + recipes.results[i].image);
