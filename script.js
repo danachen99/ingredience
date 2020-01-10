@@ -90,7 +90,7 @@ $("document").ready(function() {
 
 
 
-    $("#inputBtn").on("click", function(event) {
+    $("#submitingingredient").on("click", function(event) {
         event.preventDefault();
         var inputItem = $("#inputSearch").val().trim().toLowerCase();
         searchedItems.unshift(inputItem);
@@ -99,8 +99,9 @@ $("document").ready(function() {
 
     //search input
     function getRecipes() {
-        var inputItem = $("#submitingredients").val().trim().toLowerCase();
-        var queryUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + searchedItems[0] + "&number=2";
+        checkIntolerances();
+        var inputItem = $("#___").val().trim().toLowerCase();
+        var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + searchedItems[0] + "&number=2&intolerances=" + updatedIntolerances;
         //var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
         //var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
         var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
@@ -162,39 +163,12 @@ $("document").ready(function() {
     checkIntolerances();
 
     function checkIntolerances() {
-        var inputs = $('input[type="checkbox"]');
-        //var checkMe = $("#checkme");
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].type === 'checkbox') {
-                inputs[i].onclick = function() {
-                    // if (checkMe.checked === true) {
-                    //     console.log("ADD")
-                    // } else {
-                    //     console.log("REMOVE")
-                    // }
-                    intolerances = intolerances + this.value + ",";
-                    updatedIntolerances = intolerances.slice(0, -1);
-                    console.log(updatedIntolerances);
-                    //return intolerances;
-                    //getRecipeWithIntolerances();
-                }
+        $('input[type="checkbox"]').on('change', function() {
+            if (this.checked) {
+                intolerances = intolerances + this.value + ",";
             }
-        }
-    }
-
-    $("#button1").on("click", getRecipeWithIntolerances);
-
-    function getRecipeWithIntolerances() {
-        var queryUrl = "https://api.spoonacular.com/recipes/search?query=pepper&number=2&intolerances=" + updatedIntolerances;
-        var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
-        //var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
-        $.ajax({
-            url: queryUrl + "&apiKey=" + apiKey,
-            method: "GET"
-        }).then(function(response) {
-            console.log(this.url);
-            console.log(response);
-
+            updatedIntolerances = intolerances.slice(0, -1);
+            console.log(updatedIntolerances);
         });
     }
 
