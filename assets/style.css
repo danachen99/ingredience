@@ -7,7 +7,7 @@ orange (pink-orange): #FF9C54
 gray (black shadows): #BFB5AF
 */
 
-<<<<<<< HEAD
+
 h2{
   margin-top: none;
 }
@@ -23,21 +23,16 @@ h2{
 img {
   height: 100%;
   border-radius: 0px 0px 14px 14px;
-=======
-.container {
-  position: relative;
-  margin-top: 10rem;
->>>>>>> d02863a7630e0d90b424804205eeecec9196ea99
 }
-
 .carousel-slider {
   border-radius: 14px;
   box-shadow: 6px 6px 4px 2px #bfb5af;
 }
 
-#modal {
-  display: none;
+#modal{
+  display:none;
 }
+
 .container {
   position: relative;
   margin-top: 10rem;
@@ -69,7 +64,8 @@ transition: .5s;
   display: none;
 }
 
-#carousel {
+
+#carousel{
   display: none;
 }
 
@@ -107,12 +103,11 @@ a {
   background-color: #e2665e !important;
 }
 
-<<<<<<< HEAD
+
 a.carousel-item{
   background-color: #678164 !important;
 }
-=======
->>>>>>> d02863a7630e0d90b424804205eeecec9196ea99
+
 
 nav {
   /* background-color: #2E0F15; */

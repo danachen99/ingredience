@@ -3,7 +3,7 @@ var currentPage = 0;
 
 $("document").ready(function() {
   
-  function moveForward() {
+function moveForward() {
     currentPage++;
     if (currentPage == 1) {
       $("#landing").addClass("animated fadeOutUp faster");
@@ -109,40 +109,120 @@ function generateCarousel(recipes) {
   });
 }
 
+    var intolerances = "";
+    var updatedIntolerances = "";
 
-var intolerances = "";
-
-function checkIntolerances() {
-  var inputs = $('input[type="checkbox"]');
-  for (var i = 0; i < inputs.length; i++) {
-    if (inputs[i].type === "checkbox" && inputs[i].checked === true) {
-      intolerances =
-        intolerances + inputs[i].nextElementSibling.textContent + ",";
-      updatedIntolerances = intolerances.slice(0, -1);
+    /* ======should we use this one or the one below? ======
+    function checkIntolerances() {
+        $('input[type="checkbox"]').on('change', function() {
+            if (this.checked) {
+                intolerances = intolerances + this.value + ",";
+            }
+            updatedIntolerances = intolerances.slice(0, -1);
+            console.log(updatedIntolerances);
+        });
     }
-  }
-  getRecipeWithIntolerances(); // This will probably move somewhere later, when all pieces are coded properly we'll have to figure out best way to chain these
-}
-
-function getRecipeWithIntolerances() {
-  var queryUrl =
-    "https://api.spoonacular.com/recipes/search?query=pepper&number=5&intolerances=" +
-    updatedIntolerances;
-  // var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
-  var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
-  $.ajax({
-    url: queryUrl + "&apiKey=" + apiKey,
-    method: "GET"
-  }).then(function(response) {
-    console.log(this.url);
-    console.log(response);
-    console.log(response.results[0].id)
-    if(response.length == 0){
-      alert('nada');
-    } else {
-    generateCarousel(response);
+    */
+    function checkIntolerances() {
+        var inputs = $('input[type="checkbox"]');
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type === "checkbox" && inputs[i].checked === true) {
+                intolerances =
+                    intolerances + inputs[i].nextElementSibling.textContent + ",";
+                updatedIntolerances = intolerances.slice(0, -1);
+            }
+        }
+        getRecipeWithIntolerances(); // This will probably move somewhere later, when all pieces are coded properly we'll have to figure out best way to chain these
     }
-  });
-  
-}
+
+    function getRecipeWithIntolerances() {
+        var queryUrl =
+            "https://api.spoonacular.com/recipes/search?query=pepper&number=5&intolerances=" +
+            updatedIntolerances;
+        // var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+        var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+        $.ajax({
+            url: queryUrl + "&apiKey=" + apiKey,
+            method: "GET"
+        }).then(function(response) {
+            console.log(this.url);
+            console.log(response);
+            console.log(response.results[0].id)
+            if (response.length == 0) {
+                alert('nada');
+            } else {
+                generateCarousel(response);
+            }
+        });
+
+    }
+
+
+    $("#inputBtn").on("click", function(event) {
+        event.preventDefault();
+        var inputItem = $("#inputSearch").val().trim().toLowerCase();
+        searchedItems.unshift(inputItem);
+        getRecipes();
+    });
+
+    //search input
+    function getRecipes() {
+        var inputItem = $("#submitingingredients").val().trim().toLowerCase();
+        var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + searchedItems[0] + "&number=2&intolerances=" + updatedIntolerances;
+        //var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+        //var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+        var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
+        //var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+
+        //var searchedId = [];
+        $.ajax({
+            url: queryUrl + "&apiKey=" + apiKey,
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+            for (var i = 0; i < response.length; i++) {
+                var recipeId = response[i].id;
+                console.log(recipeId);
+                //searchedId.unshift(recipeId);
+                //console.log(searchedId);
+                var responseName = response[i].title;
+                var newDiv = $("<div class='foodItemDiv' data-id='" + recipeId + "'>" + "<span id='idDisp'>" + recipeId + "</span>" + "</div>");
+                console.log(newDiv);
+                var newP = $("<p>");
+                var hr = $("<hr>");
+                newP.text(responseName);
+                newDiv.append(newP);
+                newDiv.append(hr);
+                //James pls create a div or area to output recipes
+                $(".resultsDisplayDiv").prepend(newDiv);
+            }
+        });
+    }
+
+
+    function getInstructions(clickedId) {
+        console.log(clickedId);
+        var recipeUrl = "https://api.spoonacular.com/recipes/" + clickedId + "/analyzedInstructions?";
+        var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+        $.ajax({
+            url: recipeUrl + "&apiKey=" + apiKey,
+            method: "GET"
+        }).then(function(response) {
+            for (var i = 0;; i++) {
+                console.log(response[0].steps[i]["step"]);
+            }
+        });
+    }
+
+    $(document).on("click", ".foodItemDiv", showSteps);
+
+    function showSteps() {
+        console.log($(this).text());
+        //console.log($(this).attr("data-id"));
+        var clickedId = $(this).attr("data-id");
+        console.log(clickedId);
+        getInstructions(clickedId);
+    }
+
+});
 
