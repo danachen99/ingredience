@@ -157,7 +157,9 @@ function generateCarousel(recipes) {
 
     }
 
+    var searchedItems = [];
 
+    var inputItem;
     $("#inputBtn").on("click", function(event) {
         event.preventDefault();
         var inputItem = $("#inputSearch").val().trim().toLowerCase();
@@ -168,7 +170,7 @@ function generateCarousel(recipes) {
     //search input
     function getRecipes() {
         var inputItem = $("#submitingingredients").val().trim().toLowerCase();
-        var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + searchedItems[0] + "&number=2&intolerances=" + updatedIntolerances;
+        var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + searchedItems[0] + "&number=50&intolerances=" + updatedIntolerances;
         //var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
         //var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
         var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
@@ -182,12 +184,10 @@ function generateCarousel(recipes) {
             console.log(response);
             for (var i = 0; i < response.length; i++) {
                 var recipeId = response[i].id;
-                console.log(recipeId);
                 //searchedId.unshift(recipeId);
                 //console.log(searchedId);
                 var responseName = response[i].title;
                 var newDiv = $("<div class='foodItemDiv' data-id='" + recipeId + "'>" + "<span id='idDisp'>" + recipeId + "</span>" + "</div>");
-                console.log(newDiv);
                 var newP = $("<p>");
                 var hr = $("<hr>");
                 newP.text(responseName);
@@ -199,31 +199,49 @@ function generateCarousel(recipes) {
         });
     }
 
+    $(document).on("click", ".foodItemDiv", showSteps);
+
+    function showSteps() {
+      console.log($(this).text());
+      //console.log($(this).attr("data-id"));
+      var clickedId = $(this).attr("data-id");
+      console.log(clickedId);
+      getInstructions(clickedId);
+      ingredientsAJAX(clickedId);
+  }
 
     function getInstructions(clickedId) {
-        console.log(clickedId);
+        $("#steps").empty();
         var recipeUrl = "https://api.spoonacular.com/recipes/" + clickedId + "/analyzedInstructions?";
         var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
         $.ajax({
             url: recipeUrl + "&apiKey=" + apiKey,
             method: "GET"
         }).then(function(response) {
-            for (var i = 0;; i++) {
-                console.log(response[0].steps[i]["step"]);
+            for (var i = 0; ; i++) {
+                var steps = response[0].steps[i]["step"];
+                $("#steps").append(steps);
             }
         });
     }
 
-    $(document).on("click", ".foodItemDiv", showSteps);
-
-    function showSteps() {
-        console.log($(this).text());
-        //console.log($(this).attr("data-id"));
-        var clickedId = $(this).attr("data-id");
-        console.log(clickedId);
-        getInstructions(clickedId);
-    }
-;
-
-
-
+function ingredientsAJAX(clickedId) {
+  $("#ingredients").empty();
+  var ingredientsUrl = "https://api.spoonacular.com/recipes/" + clickedId + "/ingredientWidget.json?";
+  var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+  $.ajax({
+      url: ingredientsUrl + "&apiKey=" + apiKey,
+      method: "GET"
+  }).then(function (response) {
+      for (var i = 0; i < response.ingredients.length; i++) {
+          var results = response.ingredients[i];
+          console.log(results.amount.us.value);
+          console.log(results.amount.us.unit);
+          console.log(results.name);
+          var ingredientValue = results.amount.us.value;
+          var ingredientUnit = results.amount.us.unit;
+          var ingredientName = results.name; 
+          $("#ingredients").append(ingredientValue, ingredientUnit, ingredientName);
+      }
+  });
+}
