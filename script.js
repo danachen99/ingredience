@@ -218,17 +218,16 @@ function generateCarousel(recipes) {
             url: recipeUrl + "&apiKey=" + apiKey,
             method: "GET"
         }).then(function(response) {
-          console.log(response);
+          $(".instructions-list").empty();
             for (var i = 0; response[0].steps.length; i++) {
                 var steps = response[0].steps[i]["step"];
-                console.log(steps);
-                // $("#steps").append(`<div>`,`${steps} &nbsp;`); -- doesn't exist, can probably be deleted
+                // ("#instructions").append(`<div>`, `${step}`);
+                $(".instructions-list").append(`<li> ${steps} </li>`); 
             }
         });
     }
 
 function ingredientsAJAX(clickedId) {
-  $("#ingredients").empty();
   var ingredientsUrl = "https://api.spoonacular.com/recipes/" + clickedId + "/ingredientWidget.json?";
   var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
   // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
@@ -236,15 +235,14 @@ function ingredientsAJAX(clickedId) {
       url: ingredientsUrl + "&apiKey=" + apiKey,
       method: "GET"
   }).then(function (response) {
+    $(".ingredients-list").empty();
       for (var i = 0; i < response.ingredients.length; i++) {
           var results = response.ingredients[i];
-          console.log(results.amount.us.value);
-          console.log(results.amount.us.unit);
-          console.log(results.name);
           var ingredientValue = results.amount.us.value;
           var ingredientUnit = results.amount.us.unit;
           var ingredientName = results.name; 
-          $("#ingredients").append(`<div>`,`${ingredientValue} `, `${ingredientUnit} `, `${ingredientName}`);
+          // $("#ingredients").prepend(`<div>`,`${ingredientValue} `, `${ingredientUnit} `, `${ingredientName} &nbsp;`);
+          $(".ingredients-list").append("<div>" + ingredientValue + ' ' + ingredientUnit + ' ' + ingredientName + "</div>"); 
       }
   });
 }});
