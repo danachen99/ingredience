@@ -68,39 +68,37 @@ function moveForward() {
     checkIntolerances();
   });
 
-  $(".carousel-item").on("click", function(){
-    var recipeUrl = $(this).attr("href");
-    console.log(recipeUrl);
-    // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
-    var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
-    $.ajax({
-      url: recipeUrl + "&apiKey=" + apiKey,
-      method: "GET"
-    }).then(function(response){
-      $("#modal").show();
-      $(".modal-content").append(response);
-    })
+  $(document).on("click", ".modal-trigger", function(){
+    debugger;
+    var recipeID = $(this).attr("id");
+    // alert($(this).text);
+    // alert(event.target.textContent);
+    $("#modalheader").text($(this)[0].text);
+    ingredientsAJAX(recipeID);
+    getInstructions(recipeID);
+   
   })
   
-});
+
 
 
 $(".chips").chips();
+$('.modal').modal();
 
 // Takes response from getRecipeWithIntolerances() and creates a card for carousel for each item
 function generateCarousel(recipes) {
-  
+
+  var recipeIdArray = [];
   var recipeImgArray = [];
-  var recipeUrl = "";
   for (var i = 0; i < recipes.results.length; i++) {
-    recipeUrl = "https://api.spoonacular.com/recipes/" + recipes.results[i].id + "/analyzedInstructions"
-    console.log(recipeUrl);
-    $(".carousel").append("<div class='caritemwrapper'><a href='" + recipeUrl + "' class='carousel-item' id='carousel" + i +"'></div>");  
+    $(".carousel").append("<div class='caritemwrapper'><a href='#modal' class='carousel-item modal-trigger' id='" + recipes.results[i].id +"'></div>");  
     recipeImgArray.push("https://spoonacular.com/recipeImages/" + recipes.results[i].image);
+    recipeIdArray.push(recipes.results[i].id);
+    console.log(recipeIdArray);
   }
 
   for (var i = 0; i< recipes.results.length; i++){
-    $("#carousel" + i).append("<p class='recipecardhead'>" + recipes.results[i].title + "</p><img src=" + recipeImgArray[i] + ">");
+    $("#" + recipes.results[i].id).append("<p class='recipecardhead'>" + recipes.results[i].title + "</p><img src=" + recipeImgArray[i] + ">");
   }
 
   // Materialize.css initialize carousel
@@ -108,6 +106,7 @@ function generateCarousel(recipes) {
     fullWidth: true
   });
 }
+
 
     var intolerances = "";
     var updatedIntolerances = "";
@@ -140,7 +139,8 @@ function generateCarousel(recipes) {
             "https://api.spoonacular.com/recipes/search?query=pepper&number=5&intolerances=" +
             updatedIntolerances;
         // var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
-        var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+        var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+        // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
         $.ajax({
             url: queryUrl + "&apiKey=" + apiKey,
             method: "GET"
@@ -171,10 +171,10 @@ function generateCarousel(recipes) {
     function getRecipes() {
         var inputItem = $("#submitingingredients").val().trim().toLowerCase();
         var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + searchedItems[0] + "&number=50&intolerances=" + updatedIntolerances;
-        //var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+        var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
         //var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
-        var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
-        //var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+        // var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
+        // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
 
         //var searchedId = [];
         $.ajax({
@@ -199,49 +199,50 @@ function generateCarousel(recipes) {
         });
     }
 
-    $(document).on("click", ".foodItemDiv", showSteps);
-
-    function showSteps() {
-      console.log($(this).text());
-      //console.log($(this).attr("data-id"));
-      var clickedId = $(this).attr("data-id");
-      console.log(clickedId);
-      getInstructions(clickedId);
-      ingredientsAJAX(clickedId);
-  }
+  //   $(document).on("click", ".foodItemDiv", showSteps);
+  //   function showSteps() {
+  //     console.log($(this).text());
+  //     //console.log($(this).attr("data-id"));
+  //     var clickedId = $(this).attr("data-id");
+  //     console.log(clickedId);
+  //     getInstructions(clickedId);
+  //     ingredientsAJAX(clickedId);
+  // }
 
     function getInstructions(clickedId) {
-        $("#steps").empty();
+        // $("#steps").empty(); -- doesn't exist, can probably be deleted
         var recipeUrl = "https://api.spoonacular.com/recipes/" + clickedId + "/analyzedInstructions?";
-        var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+        // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+        var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
         $.ajax({
             url: recipeUrl + "&apiKey=" + apiKey,
             method: "GET"
         }).then(function(response) {
-            for (var i = 0; ; i++) {
+          $(".instructions-list").empty();
+            for (var i = 0; response[0].steps.length; i++) {
                 var steps = response[0].steps[i]["step"];
-                $("#steps").append(`<div>`,`${steps} &nbsp;`);
+                // ("#instructions").append(`<div>`, `${step}`);
+                $(".instructions-list").append(`<li> ${steps} </li>`); 
             }
         });
     }
 
 function ingredientsAJAX(clickedId) {
-  $("#ingredients").empty();
   var ingredientsUrl = "https://api.spoonacular.com/recipes/" + clickedId + "/ingredientWidget.json?";
   var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+  // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
   $.ajax({
       url: ingredientsUrl + "&apiKey=" + apiKey,
       method: "GET"
   }).then(function (response) {
+    $(".ingredients-list").empty();
       for (var i = 0; i < response.ingredients.length; i++) {
           var results = response.ingredients[i];
-          console.log(results.amount.us.value);
-          console.log(results.amount.us.unit);
-          console.log(results.name);
           var ingredientValue = results.amount.us.value;
           var ingredientUnit = results.amount.us.unit;
           var ingredientName = results.name; 
-          $("#ingredients").append(`<div>`,`${ingredientValue} `, `${ingredientUnit} `, `${ingredientName}`);
+          // $("#ingredients").prepend(`<div>`,`${ingredientValue} `, `${ingredientUnit} `, `${ingredientName} &nbsp;`);
+          $(".ingredients-list").append("<div>" + ingredientValue + ' ' + ingredientUnit + ' ' + ingredientName + "</div>"); 
       }
   });
-}
+}});
