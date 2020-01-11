@@ -224,5 +224,5 @@ function generateCarousel(recipes) {
         getInstructions(clickedId);
     }
 
-});
+;
 
