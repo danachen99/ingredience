@@ -1,7 +1,6 @@
 // ! CREATE STARTOVER AND GETMORERECIPES FUNCTIONS
 var currentPage = 0;
 
-
 $("document").ready(function() {
   
   function moveForward() {
@@ -146,3 +145,4 @@ function getRecipeWithIntolerances() {
   });
   
 }
+
