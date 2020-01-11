@@ -194,8 +194,6 @@ $("document").ready(function() {
     }
 
 
-    //==========EDIT FROM HERE DOWN==============
-
     $("#inputBtn").on("click", function(event) {
         event.preventDefault();
         var inputItem = $("#inputSearch").val().trim().toLowerCase();
