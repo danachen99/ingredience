@@ -5,61 +5,72 @@ green (russian green): #678164
 pale (banana mania): #F1E8B8
 orange (pink-orange): #FF9C54
 gray (black shadows): #BFB5AF
-
 */
 
-
-.container{
+.container {
   position: relative;
   margin-top: 10rem;
 }
 
-#options{
+#modal{
   display:none;
 }
+.container {
+  position: relative;
+  margin-top: 10rem;
+}
 
-body{
+#options {
+  display: none;
+  opacity: 0;
+}
+
+#restrictionspage {
+  display: none;
+}
+
+#ingredientspage {
+  display: none;
+}
+
+#carousel{
+  display: none;
+}
+
+.dietoption {
+  margin: 0rem 1.5rem;
+}
+
+hr {
+  color: #e2665e;
+  border: 3px solid #e2665e;
+}
+
+span {
+  font-size: 2.4rem !important;
+  color: #678164;
+}
+
+body {
   background-image: url(brooke-lark-08bOYnH_r_E-unsplash.jpg);
   background-attachment: fixed;
-  height: 100%;
-  width: 100%;
-  color: #E2665E;
-  background-size: 100%;
+  color: #678164;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: fixed;
-} 
-
-#test{
+  background-position: center center;
   text-align: center;
 }
 
+p {
+  margin: 2.2rem 0rem;
+}
 
-a{
-  background-color: #FF9C54 !important;
+a {
+  background-color: #e2665e !important;
 }
 
 
-nav{
+nav {
   /* background-color: #2E0F15; */
-  color: #2E0F15;
+  color: #2e0f15;
 }
-
-
-span{
-  color: #E2665E;
-}
-
-
-/* nav{
-  background-color: #BFB5AF;
-  color: #F1E8B8;
-} */
-
-
-
-
-
-
-/* div{
-  height: 100%;
-} */
