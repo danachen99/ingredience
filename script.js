@@ -1,149 +1,113 @@
+// ! CREATE STARTOVER AND GETMORERECIPES FUNCTIONS
 var currentPage = 0;
 
 $("document").ready(function() {
-
-    //   Function to move forward from initial landing page
-    // function moveLanding() {
-    //   $("#landing").addClass("animated fadeOutUp faster");
-    //   $("#landing").on("animationend", function() {
-    //     $("#landing").hide();
-    //   });
-    //   setTimeout(function() {
-    //     $("#options")
-    //       .show()
-    //       .addClass("animated fadeInUp faster");
-    //   }, 500);
-    // }
-
-    function moveForward() {
-        currentPage++;
-        if (currentPage == 1) {
-            $("#landing").addClass("animated fadeOutUp faster");
-            $("#landing").on("animationend", function() {
-                $("#landing").hide();
-                $("#landing").removeClass("animated fadeOutUp faster");
-            });
-            setTimeout(function() {
-                $("#options")
-                    .show()
-                    .addClass("animated fadeInUp faster");
-            }, 500);
-            return
-        } else if (currentPage == 2) {
-            $("#options").addClass("animated fadeOutUp");
-            $("#options").on("animationend", function() {
-                $("#options").hide();
-                $("#options").removeClass("animated fadeOutUp faster");
-            });
-            setTimeout(function() {
-                $("#restrictionspage")
-                    .show()
-                    .addClass("animated fadeInUp faster");
-            }, 500);
-            return
-        } else if (currentPage == 3) {
-            $("#restrictionspage").addClass("animated fadeOutUp");
-            $("#restrictionspage").on("animationend", function() {
-                $("#restrictionspage").hide();
-                $("#restrictionspage").removeClass("animated fadeOutUp faster");
-            });
-            setTimeout(function() {
-                $("#ingredientspage")
-                    .show()
-                    .addClass("animated fadeInUp faster");
-            }, 500);
-            return
-        }
-    }
-
-    //   Function to step back in page content -- THIS IS NOT COMPLETE DON'T JUDGE ME
-    function moveBack() {
-        if (currentPage == 3) {
-            $("#ingredientspage")
-                .removeClass("animated fadeInUp faster")
-                .addClass("animated fadeOutDown faster")
-                .hide();
-            $("#restrictionspage").show();
-            $("#restrictionspage").addClass("animated fadeInDown");
-            return
-        } else if (currentPage == 2) {
-            return
-            // $("#restrictionspage")
-            //   .removeClass("animated fadeInUp faster")
-            //   .addClass("animated fadeOutDown faster");
-        } else if (currentPage == 1) {
-            $("#options")
-                .removeClass("animated fadeInUp faster")
-                .addClass("animated fadeOutDown faster");
-            return
-        }
-    }
-
-    //   Page movement event handlers
-    $("#startbutton").on("click", function() {
-        moveForward();
-    });
-
-    $(".backbutton").click(function() {
-        moveBack();
-    });
-
-    $(".nextbutton").click(function() {
-        moveForward();
-    });
-
-    $("#submitingredients").click(function() {
+  
+function moveForward() {
+    currentPage++;
+    if (currentPage == 1) {
+      $("#landing").addClass("animated fadeOutUp faster");
+      $("#landing").on("animationend", function() {
+        $("#landing").hide();
+        $("#landing").removeClass("animated fadeOutUp faster");
+      });
+      setTimeout(function() {
+        $("#options")
+          .show()
+          .addClass("animated fadeInUp faster");
+      }, 500);
+      return
+    } else if (currentPage == 2) {
+      $("#options").addClass("animated fadeOutUp");
+      $("#options").on("animationend", function() {
+        $("#options").hide();
+        $("#options").removeClass("animated fadeOutUp faster");
+      });
+      setTimeout(function() {
+        $("#restrictionspage")
+          .show()
+          .addClass("animated fadeInUp faster");
+      }, 500);
+      return
+    } else if (currentPage == 3) {
+      $("#restrictionspage").addClass("animated fadeOutUp");
+      $("#restrictionspage").on("animationend", function() {
+        $("#restrictionspage").hide();
+        $("#restrictionspage").removeClass("animated fadeOutUp faster");
+      });
+      setTimeout(function() {
         $("#ingredientspage")
-            .show()
-            .addClass("animated fadeOutUp faster");
-        setTimeout(function() {
-            $("#ingredientspage").hide();
-        }, 300);
-        setTimeout(function() {
-            $("#carousel")
-                .show()
-                .addClass("animated fadeInUp faster");
-        }, 500);
-        checkIntolerances();
-    });
-
-    $(".carousel-item").on("click", function() {
-        var recipeUrl = $(this).attr("href");
-        console.log(recipeUrl);
-        // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
-        var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
-        $.ajax({
-            url: recipeUrl + "&apiKey=" + apiKey,
-            method: "GET"
-        }).then(function(response) {
-            $("#modal").show();
-            $(".modal-content").append(response);
-        })
-    })
-
-
-    $(".chips").chips();
-
-    // Takes response from getRecipeWithIntolerances() and creates a card for carousel for each item
-    function generateCarousel(recipes) {
-
-        var recipeImgArray = [];
-        var recipeUrl = "";
-        for (var i = 0; i < recipes.results.length; i++) {
-            recipeUrl = "https://api.spoonacular.com/recipes/" + recipes.results[i].id + "/analyzedInstructions"
-            console.log(recipeUrl);
-            $(".carousel").append("<a href='" + recipeUrl + "' class='carousel-item' id='carousel" + i + "'>");
-            recipeImgArray.push("https://spoonacular.com/recipeImages/" + recipes.results[i].image);
-        }
-
-        for (var i = 0; i < recipes.results.length; i++) {
-            $("#carousel" + i).append("<img src=" + recipeImgArray[i] + ">");
-        }
-
-        $(".carousel.carousel-slider").carousel({
-            fullWidth: true
-        });
+          .show()
+          .addClass("animated fadeInUp faster");
+      }, 500);
+      return
     }
+  }
+
+  //   Page movement event handlers
+  $("#startbutton").on("click", function() {
+    moveForward();
+  });
+
+  $(".nextbutton").click(function() {
+    moveForward();
+  });
+
+  $("#submitingredients").click(function() {
+    $("#ingredientspage")
+      .show()
+      .addClass("animated fadeOutUp faster");
+    setTimeout(function() {
+      $("#ingredientspage").hide();
+    }, 300);
+    setTimeout(function() {
+      $("#carousel")
+        .show()
+        .addClass("animated fadeInUp faster");
+      }, 500);
+    checkIntolerances();
+  });
+
+  $(".carousel-item").on("click", function(){
+    var recipeUrl = $(this).attr("href");
+    console.log(recipeUrl);
+    // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+    var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+    $.ajax({
+      url: recipeUrl + "&apiKey=" + apiKey,
+      method: "GET"
+    }).then(function(response){
+      $("#modal").show();
+      $(".modal-content").append(response);
+    })
+  })
+  
+});
+
+
+$(".chips").chips();
+
+// Takes response from getRecipeWithIntolerances() and creates a card for carousel for each item
+function generateCarousel(recipes) {
+  
+  var recipeImgArray = [];
+  var recipeUrl = "";
+  for (var i = 0; i < recipes.results.length; i++) {
+    recipeUrl = "https://api.spoonacular.com/recipes/" + recipes.results[i].id + "/analyzedInstructions"
+    console.log(recipeUrl);
+    $(".carousel").append("<div class='caritemwrapper'><a href='" + recipeUrl + "' class='carousel-item' id='carousel" + i +"'></div>");  
+    recipeImgArray.push("https://spoonacular.com/recipeImages/" + recipes.results[i].image);
+  }
+
+  for (var i = 0; i< recipes.results.length; i++){
+    $("#carousel" + i).append("<p class='recipecardhead'>" + recipes.results[i].title + "</p><img src=" + recipeImgArray[i] + ">");
+  }
+
+  // Materialize.css initialize carousel
+  $(".carousel.carousel-slider").carousel({
+    fullWidth: true
+  });
+}
 
     var intolerances = "";
     var updatedIntolerances = "";
@@ -259,5 +223,7 @@ $("document").ready(function() {
         console.log(clickedId);
         getInstructions(clickedId);
     }
+;
 
-});
+
+
