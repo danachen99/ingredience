@@ -220,7 +220,7 @@ function generateCarousel(recipes) {
         }).then(function(response) {
             for (var i = 0; ; i++) {
                 var steps = response[0].steps[i]["step"];
-                $("#steps").append(steps);
+                $("#steps").append(`<div>`,`${steps} &nbsp;`);
             }
         });
     }
@@ -241,7 +241,7 @@ function ingredientsAJAX(clickedId) {
           var ingredientValue = results.amount.us.value;
           var ingredientUnit = results.amount.us.unit;
           var ingredientName = results.name; 
-          $("#ingredients").append(ingredientValue, ingredientUnit, ingredientName);
+          $("#ingredients").append(`<div>`,`${ingredientValue} `, `${ingredientUnit} `, `${ingredientName}`);
       }
   });
 }
