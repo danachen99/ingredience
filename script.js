@@ -223,6 +223,7 @@ function generateCarousel(recipes) {
         console.log(clickedId);
         getInstructions(clickedId);
     }
-
 ;
+
+
 
