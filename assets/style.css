@@ -42,19 +42,18 @@ img {
   opacity: 0;
 }
 
-.caritemwrapper{
+/* .caritemwrapper{
 background-color: #F1E8B8;
 }
 
 .caritemwrapper:hover img{
 opacity: 0.5;
 transition: .5s;
-}
-
+} */
+/* 
 #optionswrap {
-  border: 4px dotted #ff9c54;
   padding: 2em;
-}
+} */
 
 #restrictionspage {
   display: none;

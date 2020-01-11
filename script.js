@@ -4,21 +4,6 @@ var currentPage = 0;
 
 $("document").ready(function() {
   
-
-
-  //   Function to move forward from initial landing page
-  // function moveLanding() {
-  //   $("#landing").addClass("animated fadeOutUp faster");
-  //   $("#landing").on("animationend", function() {
-  //     $("#landing").hide();
-  //   });
-  //   setTimeout(function() {
-  //     $("#options")
-  //       .show()
-  //       .addClass("animated fadeInUp faster");
-  //   }, 500);
-  // }
-
   function moveForward() {
     currentPage++;
     if (currentPage == 1) {
@@ -60,36 +45,9 @@ $("document").ready(function() {
     }
   }
 
-  //   Function to step back in page content -- THIS IS NOT COMPLETE DON'T JUDGE ME
-  function moveBack() {
-    if (currentPage == 3) {
-      $("#ingredientspage")
-        .removeClass("animated fadeInUp faster")
-        .addClass("animated fadeOutDown faster")
-        .hide();
-      $("#restrictionspage").show();
-      $("#restrictionspage").addClass("animated fadeInDown");
-      return
-    } else if (currentPage == 2) {
-      return
-      // $("#restrictionspage")
-      //   .removeClass("animated fadeInUp faster")
-      //   .addClass("animated fadeOutDown faster");
-    } else if (currentPage == 1) {
-      $("#options")
-        .removeClass("animated fadeInUp faster")
-        .addClass("animated fadeOutDown faster");
-        return
-    }
-  }
-
   //   Page movement event handlers
   $("#startbutton").on("click", function() {
     moveForward();
-  });
-
-  $(".backbutton").click(function() {
-    moveBack();
   });
 
   $(".nextbutton").click(function() {
@@ -128,8 +86,6 @@ $("document").ready(function() {
 });
 
 
-
-
 $(".chips").chips();
 
 // Takes response from getRecipeWithIntolerances() and creates a card for carousel for each item
@@ -146,10 +102,9 @@ function generateCarousel(recipes) {
 
   for (var i = 0; i< recipes.results.length; i++){
     $("#carousel" + i).append("<p class='recipecardhead'>" + recipes.results[i].title + "</p><img src=" + recipeImgArray[i] + ">");
-
-
   }
 
+  // Materialize.css initialize carousel
   $(".carousel.carousel-slider").carousel({
     fullWidth: true
   });
