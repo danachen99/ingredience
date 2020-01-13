@@ -114,7 +114,6 @@ $("document").ready(function() {
         var inputs = $('input[type="checkbox"]');
         var intolerances = "";
         var updatedIntolerances = "";
-        var dietOption = "";
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].type === "checkbox" && inputs[i].checked === true) {
                 intolerances =
@@ -123,11 +122,11 @@ $("document").ready(function() {
             }
         }
         updatedIntolerances = updatedIntolerances.toLowerCase();
-        getRecipes(ingredients, updatedIntolerances); // This will probably move somewhere later, when all pieces are coded properly we'll have to figure out best way to chain these
+        checkDietOptions(ingredients, updatedIntolerances);
     }
 
 
-    function checkDietOptions() {
+    function checkDietOptions(ingredients, updatedIntolerances) {
         var options = $('input[type="radio"]');
         var dietOptions = null;
         for (var i = 0; i < options.length; i++) {
@@ -136,13 +135,14 @@ $("document").ready(function() {
                 console.log(dietOptions);
             }
         }
+        getRecipes(ingredients, updatedIntolerances, dietOptions); // This will probably move somewhere later, when all pieces are coded properly we'll have to figure out best way to chain these
     }
 
 
     //search input
-    function getRecipes(ingredients, updatedIntolerances) {
+    function getRecipes(ingredients, updatedIntolerances, dietOptions) {
         // ====== WHERE THE CONDITIONAL STATEMENTS WILL GO ===== 
-        var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + ingredients + "&number=2&intolerances=" + updatedIntolerances + "&diet=";
+        var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + ingredients + "&number=2&intolerances=" + updatedIntolerances + "&diet=" + dietOptions;
         //var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
         //var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
         var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
@@ -153,7 +153,7 @@ $("document").ready(function() {
             method: "GET"
         }).then(function(response) {
             console.log(this.url);
-            console.log(response.results[0].id)
+            //console.log(response.results[0].id)
             console.log(response);
             for (var i = 0; i < response.length; i++) {
                 var recipeId = response[i].id;
