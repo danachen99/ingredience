@@ -99,7 +99,7 @@ $("document").ready(function() {
         });
     }
 
-    /* ======should we use this one or the one below? ======
+    /*
     function checkIntolerances() {
         $('input[type="checkbox"]').on('change', function() {
             if (this.checked) {
@@ -217,6 +217,5 @@ $("document").ready(function() {
         }
         var ingredients = inpt.value;
         checkIntolerances(ingredients);
-        checkDietOptions();
     }
 });

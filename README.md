@@ -1,2 +1,12 @@
-# project1
-Group 3 Project 1 hi
+# Ingredience
+
+## Purpose
+
+## Instructions
+
+## Images
+
+## Tools Used
+
+## Contributors
+James McKenna, Dana Chen, Sean Cumming
