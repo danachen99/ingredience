@@ -88,7 +88,7 @@ $("document").ready(function() {
             $(".carousel").append("<div class='caritemwrapper'><a href='#modal' class='carousel-item modal-trigger' id='" + recipes.results[i].id + "'></div>");
             recipeImgArray.push("https://spoonacular.com/recipeImages/" + recipes.results[i].image);
             recipeIdArray.push(recipes.results[i].id);
-            console.log(recipeIdArray);
+            //console.log(recipeIdArray);
         }
         for (var i = 0; i < recipes.results.length; i++) {
             $("#" + recipes.results[i].id).append("<p class='recipecardhead'>" + recipes.results[i].title + "</p><img src=" + recipeImgArray[i] + ">");
