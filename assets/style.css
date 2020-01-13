@@ -7,6 +7,11 @@ orange (pink-orange): #FF9C54
 gray (black shadows): #BFB5AF
 */
 
+#appname{
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 8vw;
+}
+
 
 h2{
   margin-top: none;
@@ -76,7 +81,10 @@ transition: .5s;
 hr {
   color: #e2665e;
   border: 3px solid #e2665e;
+  margin-bottom: 2em;
 }
+
+
 
 span {
   font-size: 2.4rem !important;
@@ -84,7 +92,7 @@ span {
 }
 
 body {
-  background-image: url(brooke-lark-08bOYnH_r_E-unsplash.jpg);
+  /* background-image: url(brooke-lark-08bOYnH_r_E-unsplash_shrunk.jpg); */
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
@@ -114,6 +122,72 @@ nav {
   color: #2e0f15;
 }
 
-hr{
-  margin-bottom: 2em;
+
+/* computer */
+@media all and (min-width: 1024px) and (max-width: 1280px) { 
+
+
 }
+
+
+/* tablet landscape and smaller */
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  h2, span{
+    font-size: 2.75rem !important;
+  }
+
+ }
+
+
+ /* tablet */
+@media all and (min-width: 480px) and (max-width: 768px) {
+
+  h2, span{
+    font-size: 3.5rem !important;
+  }
+
+  .container{
+    margin-top: 10rem;
+  }
+  span{
+    margin-top: 3%;
+  }
+ }
+
+ /* Phone landscape and smaller */
+@media all and (max-width: 480px) {
+  #restrictionspage {
+    margin-top: 0;
+  }
+    .dietOption {
+    margin-top: .75rem; 
+    display: block;
+  }
+    h2, span{
+      font-size: 2rem !important;
+    }
+    
+    span{
+      margin-top: 2%;
+    }
+ }
+
+/* 
+@media screen and (max-width: 725px) {
+	#restrictionspage {
+	margin-top: 0;
+}
+	.dietOption {
+	margin-top: .75rem; 
+	display: block;
+}
+  h2{
+    font-size: 3rem;
+  }
+};
+
+@media screen and (max-width: 360px) {
+  h2{
+    font-size: 2rem;
+  }
+} */
