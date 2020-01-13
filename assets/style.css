@@ -7,14 +7,20 @@ orange (pink-orange): #FF9C54
 gray (black shadows): #BFB5AF
 */
 
-
 h2{
   margin-top: none;
 }
 
+li{
+  margin: 1.1em 0em;  
+}
 .recipecardhead{
   color: #F1E8B8;
   font-size: 1.4rem !important;
+}
+
+.recipecardhead:hover{
+  text-decoration: underline;
 }
 .cardimg{
   opacity:1;
@@ -24,15 +30,15 @@ img {
   height: 100%;
   border-radius: 0px 0px 14px 14px;
 }
+
 .carousel-slider {
   border-radius: 14px;
   box-shadow: 6px 6px 4px 2px #bfb5af;
 }
 
-#modal{
-  display:none;
+#modal {
+  display: none;
 }
-
 .container {
   position: relative;
   margin-top: 10rem;
@@ -43,18 +49,6 @@ img {
   opacity: 0;
 }
 
-/* .caritemwrapper{
-background-color: #F1E8B8;
-}
-
-.caritemwrapper:hover img{
-opacity: 0.5;
-transition: .5s;
-} */
-/* 
-#optionswrap {
-  padding: 2em;
-} */
 
 #restrictionspage {
   display: none;
@@ -64,8 +58,7 @@ transition: .5s;
   display: none;
 }
 
-
-#carousel{
+#carousel {
   display: none;
 }
 
@@ -103,11 +96,9 @@ a {
   background-color: #e2665e !important;
 }
 
-
 a.carousel-item{
   background-color: #678164 !important;
 }
-
 
 nav {
   /* background-color: #2E0F15; */

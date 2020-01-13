@@ -71,8 +71,6 @@ function moveForward() {
   $(document).on("click", ".modal-trigger", function(){
     debugger;
     var recipeID = $(this).attr("id");
-    // alert($(this).text);
-    // alert(event.target.textContent);
     $("#modalheader").text($(this)[0].text);
     ingredientsAJAX(recipeID);
     getInstructions(recipeID);
@@ -138,8 +136,8 @@ function generateCarousel(recipes) {
         var queryUrl =
             "https://api.spoonacular.com/recipes/search?query=pepper&number=5&intolerances=" +
             updatedIntolerances;
-        // var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
-        var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+        var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+        // var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
         // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
         $.ajax({
             url: queryUrl + "&apiKey=" + apiKey,
@@ -171,8 +169,8 @@ function generateCarousel(recipes) {
     function getRecipes() {
         var inputItem = $("#submitingingredients").val().trim().toLowerCase();
         var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + searchedItems[0] + "&number=50&intolerances=" + updatedIntolerances;
-        var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
-        //var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
+        // var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+        var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
         // var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
         // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
 
@@ -213,7 +211,8 @@ function generateCarousel(recipes) {
         // $("#steps").empty(); -- doesn't exist, can probably be deleted
         var recipeUrl = "https://api.spoonacular.com/recipes/" + clickedId + "/analyzedInstructions?";
         // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
-        var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+        // var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+        var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
         $.ajax({
             url: recipeUrl + "&apiKey=" + apiKey,
             method: "GET"
@@ -229,8 +228,9 @@ function generateCarousel(recipes) {
 
 function ingredientsAJAX(clickedId) {
   var ingredientsUrl = "https://api.spoonacular.com/recipes/" + clickedId + "/ingredientWidget.json?";
-  var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+  // var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
   // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+  var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
   $.ajax({
       url: ingredientsUrl + "&apiKey=" + apiKey,
       method: "GET"
