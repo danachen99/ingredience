@@ -128,7 +128,7 @@ $("document").ready(function() {
 
     function checkDietOptions(ingredients, updatedIntolerances) {
         var options = $('input[type="radio"]');
-        var dietOptions = null;
+        var dietOptions = "";
         for (var i = 0; i < options.length; i++) {
             if (options[i].checked) {
                 dietOptions = options[i].nextElementSibling.textContent
@@ -141,7 +141,6 @@ $("document").ready(function() {
 
     //search input
     function getRecipes(ingredients, updatedIntolerances, dietOptions) {
-        // ====== WHERE THE CONDITIONAL STATEMENTS WILL GO ===== 
         var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + ingredients + "&number=2&intolerances=" + updatedIntolerances + "&diet=" + dietOptions;
         //var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
         //var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
