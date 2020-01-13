@@ -80,7 +80,7 @@ $("document").ready(function() {
     $(".chips").chips();
     $('.modal').modal();
 
-    // Takes response from getRecipeWithIntolerances() and creates a card for carousel for each item
+    // Takes response from getRecipe() and creates a card for carousel for each item
     function generateCarousel(recipes) {
         var recipeIdArray = [];
         var recipeImgArray = [];
@@ -114,6 +114,7 @@ $("document").ready(function() {
         var inputs = $('input[type="checkbox"]');
         var intolerances = "";
         var updatedIntolerances = "";
+        var dietOption = "";
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].type === "checkbox" && inputs[i].checked === true) {
                 intolerances =
@@ -121,12 +122,27 @@ $("document").ready(function() {
                 updatedIntolerances = intolerances.slice(0, -1);
             }
         }
+        updatedIntolerances = updatedIntolerances.toLowerCase();
         getRecipes(ingredients, updatedIntolerances); // This will probably move somewhere later, when all pieces are coded properly we'll have to figure out best way to chain these
     }
 
+
+    function checkDietOptions() {
+        var options = $('input[type="radio"]');
+        var dietOptions = null;
+        for (var i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                dietOptions = options[i].nextElementSibling.textContent
+                console.log(dietOptions);
+            }
+        }
+    }
+
+
     //search input
     function getRecipes(ingredients, updatedIntolerances) {
-        var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + ingredients + "&number=2&intolerances=" + updatedIntolerances;
+        // ====== WHERE THE CONDITIONAL STATEMENTS WILL GO ===== 
+        var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + ingredients + "&number=2&intolerances=" + updatedIntolerances + "&diet=";
         //var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
         //var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
         var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
@@ -139,7 +155,6 @@ $("document").ready(function() {
             console.log(this.url);
             console.log(response.results[0].id)
             console.log(response);
-            console.log(response.url);
             for (var i = 0; i < response.length; i++) {
                 var recipeId = response[i].id;
                 console.log(recipeId);
@@ -184,7 +199,6 @@ $("document").ready(function() {
                 var ingredientValue = results.amount.us.value;
                 var ingredientUnit = results.amount.us.unit;
                 var ingredientName = results.name;
-                // $("#ingredients").prepend(`<div>`,`${ingredientValue} `, `${ingredientUnit} `, `${ingredientName} &nbsp;`);
                 $(".ingredients-list").append("<div>" + ingredientValue + ' ' + ingredientUnit + ' ' + ingredientName + "</div>");
             }
         });
@@ -204,5 +218,6 @@ $("document").ready(function() {
         }
         var ingredients = inpt.value;
         checkIntolerances(ingredients);
+        checkDietOptions();
     }
 });
