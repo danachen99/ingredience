@@ -1,4 +1,3 @@
-// ! CREATE STARTOVER AND GETMORERECIPES FUNCTIONS
 var currentPage = 0;
 $("document").ready(function() {
     function moveForward() {
@@ -64,22 +63,24 @@ $("document").ready(function() {
                 .addClass("animated fadeInUp faster");
         }, 500);
         getUserChips();
-        //checkIntolerances(); moved down 
     });
 
     $(document).on("click", ".modal-trigger", function() {
-        //debugger;
+        $('#ingredients').empty();
         var recipeID = $(this).attr("id");
-        // alert($(this).text);
-        // alert(event.target.textContent);
         $("#modalheader").text($(this)[0].text);
         getIngredients(recipeID);
         getInstructions(recipeID);
     })
 
+    $("#startoverbtn").on("click", function(){
+        window.location.reload();
+    })
+
     $(".chips").chips();
     $('.modal').modal();
 
+   
     // Takes response from getRecipe() and creates a card for carousel for each item
     function generateCarousel(recipes) {
         var recipeIdArray = [];
@@ -88,7 +89,7 @@ $("document").ready(function() {
             $(".carousel").append("<div class='caritemwrapper'><a href='#modal' class='carousel-item modal-trigger' id='" + recipes.results[i].id + "'></div>");
             recipeImgArray.push("https://spoonacular.com/recipeImages/" + recipes.results[i].image);
             recipeIdArray.push(recipes.results[i].id);
-            //console.log(recipeIdArray);
+            
         }
         for (var i = 0; i < recipes.results.length; i++) {
             $("#" + recipes.results[i].id).append("<p class='recipecardhead'>" + recipes.results[i].title + "</p><img src=" + recipeImgArray[i] + ">");
@@ -125,7 +126,7 @@ $("document").ready(function() {
             }
         }
         dietOptions = dietOptions.toLowerCase();
-        getRecipes(ingredients, updatedIntolerances, dietOptions); // This will probably move somewhere later, when all pieces are coded properly we'll have to figure out best way to chain these
+        getRecipes(ingredients, updatedIntolerances, dietOptions); 
     }
 
 
@@ -134,24 +135,17 @@ $("document").ready(function() {
         var queryUrl = "https://api.spoonacular.com/recipes/search?query=" + ingredients + "&number=20&intolerances=" + updatedIntolerances + "&diet=" + dietOptions + "&instructionsRequired=true";
         //var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
         //var apiKey = "a24fa84bbda24ba5a81304ccf4121858";
-        var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
-        //var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
-        //var searchedId = [];
+        // var apiKey = "7884711d9e63490ba357787dbc3eb1fe";
+        var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
         $.ajax({
             url: queryUrl + "&apiKey=" + apiKey,
             method: "GET"
         }).then(function(response) {
-            console.log(this.url);
-            //console.log(response.results[0].id)
-            //console.log(response);
             for (var i = 0; i < response.length; i++) {
-                var recipeId = response[i].id;
-                console.log(recipeId);
-                //searchedId.unshift(recipeId);
-                //console.log(searchedId);
+                var recipeId = response[i].id;              ;
             }
             if (response.length == 0) {
-                console.log('nada');
+                $("#carouseldiv").append('<h1>No results found, please try again.</h1>');
             } else {
                 generateCarousel(response);
             }
@@ -160,8 +154,8 @@ $("document").ready(function() {
 
     function getInstructions(recipeID) {
         var recipeUrl = "https://api.spoonacular.com/recipes/" + recipeID + "/analyzedInstructions?";
-        // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
-        var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+        var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+        // var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
         $.ajax({
             url: recipeUrl + "&apiKey=" + apiKey,
             method: "GET"
@@ -181,8 +175,8 @@ $("document").ready(function() {
 
     function getIngredients(recipeID) {
         var ingredientsUrl = "https://api.spoonacular.com/recipes/" + recipeID + "/ingredientWidget.json?";
-        var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
-        // var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
+        // var apiKey = "256cd3ee2e0548e59e4990ad44a8ec31";
+        var apiKey = "3ecef2433f5d402daccaccdf1550dabe";
         $.ajax({
             url: ingredientsUrl + "&apiKey=" + apiKey,
             method: "GET"
@@ -208,9 +202,34 @@ $("document").ready(function() {
             else {
                 inpt.value += ',' + instance.chipsData[i].tag;
             }
-            //console.log(instance.chipsData[i].tag);
         }
         var ingredients = inpt.value;
         checkIntolerances(ingredients);
+    }
+
+    $("#get-drink").on("click", getRandomCocktail)
+    function getRandomCocktail() {
+        $("#ingredients").empty();
+        $("#ingredients-list").empty();
+        $("#instructions").empty();
+        $("#instructions-list").empty();
+        $("#modalheader").empty();
+        var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+            console.log(response.drinks[0]);
+            $("#modalheader").append(response.drinks[0].strDrink);
+            $("#instructions").append("<img src='" + response.drinks[0].strDrinkThumb + "' id='drink-img'> ");
+            for (var i = 1; i < 15; i++) {
+                var drinkIngredients = response.drinks[0]["strIngredient" + i];
+                var measurements = response.drinks[0]["strMeasure" + i];
+                if ((drinkIngredients != null) && (measurements != null)) {
+                    console.log(measurements + " " + drinkIngredients)
+                    $("#ingredients").append("<p>" + measurements + " " + drinkIngredients + "</p>");
+                }
+            }
+        });
     }
 });
