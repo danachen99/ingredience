@@ -12,6 +12,10 @@ gray (black shadows): #BFB5AF
   font-size: 8vw;
 }
 
+.modal-close {
+  color: white;
+}
+
 .modal-footer {
   text-align: center !important;
 }
@@ -87,6 +91,7 @@ hr {
   margin-bottom: 2em;
 }
 
+
 input {
   position: absolute;
 }
@@ -122,6 +127,13 @@ nav {
   color: #2e0f15;
 }
 
+@media all and (max-width: 994px){
+  #appnamediv{
+  width: auto !important;
+  margin-left: 47% !important;
+  }
+}
+
 /* computer */
 @media all and (min-width: 1024px) and (max-width: 1140px) {
   h2 {
@@ -129,6 +141,9 @@ nav {
   }
   span {
     font-size: 2rem !important;
+  }
+  a.lastbuttons{
+    margin: 0% 3%;
   }
 }
 
@@ -151,6 +166,13 @@ nav {
     font-size: 1.5rem !important;
   }
 
+  a.lastbuttons{
+    margin: 3% 0%;
+  }
+
+  a{
+    font-size: .75rem !important;
+  }
   .container {
     margin-top: 10rem;
   }
@@ -162,6 +184,11 @@ nav {
 
 /* Phone landscape and smaller */
 @media all and (max-width: 480px) {
+
+  a.lastbuttons{
+    margin: 3% 0%;
+  }
+
   #restrictionspage {
     margin-top: 0;
   }
@@ -179,7 +206,7 @@ nav {
   h1 {
     font-size: 2rem !important;
   }
-  h4{
+  h4 {
     font-size: 1.1rem;
   }
 

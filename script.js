@@ -77,9 +77,14 @@ $("document").ready(function() {
         getInstructions(recipeID);
     })
 
+    $("#startoverbtn").on("click", function(){
+        window.location.reload();
+    })
+
     $(".chips").chips();
     $('.modal').modal();
 
+   
     // Takes response from getRecipe() and creates a card for carousel for each item
     function generateCarousel(recipes) {
         var recipeIdArray = [];
@@ -88,7 +93,7 @@ $("document").ready(function() {
             $(".carousel").append("<div class='caritemwrapper'><a href='#modal' class='carousel-item modal-trigger' id='" + recipes.results[i].id + "'></div>");
             recipeImgArray.push("https://spoonacular.com/recipeImages/" + recipes.results[i].image);
             recipeIdArray.push(recipes.results[i].id);
-            //console.log(recipeIdArray);
+            
         }
         for (var i = 0; i < recipes.results.length; i++) {
             $("#" + recipes.results[i].id).append("<p class='recipecardhead'>" + recipes.results[i].title + "</p><img src=" + recipeImgArray[i] + ">");
@@ -141,17 +146,11 @@ $("document").ready(function() {
             url: queryUrl + "&apiKey=" + apiKey,
             method: "GET"
         }).then(function(response) {
-            console.log(this.url);
-            //console.log(response.results[0].id)
-            //console.log(response);
             for (var i = 0; i < response.length; i++) {
-                var recipeId = response[i].id;
-                console.log(recipeId);
-                //searchedId.unshift(recipeId);
-                //console.log(searchedId);
+                var recipeId = response[i].id;              ;
             }
             if (response.length == 0) {
-                console.log('nada');
+                $("#carouseldiv").append('<h1>No results found, please try again.</h1>');
             } else {
                 generateCarousel(response);
             }
