@@ -7,22 +7,33 @@ orange (pink-orange): #FF9C54
 gray (black shadows): #BFB5AF
 */
 
-#appname{
-  font-family: 'Cedarville Cursive', cursive;
+#appname {
+  font-family: "Cedarville Cursive", cursive;
   font-size: 8vw;
 }
 
+.modal-footer {
+  text-align: center !important;
+}
+div.checkspan {
+  display: inline-block;
+}
 
-h2{
+h2 {
   margin-top: none;
 }
 
-.recipecardhead{
-  color: #F1E8B8;
+li {
+  margin: 5% 0%;
+  text-align: left !important;
+}
+
+.recipecardhead {
+  color: #f1e8b8;
   font-size: 1.4rem !important;
 }
-.cardimg{
-  opacity:1;
+.cardimg {
+  opacity: 1;
 }
 
 img {
@@ -34,8 +45,8 @@ img {
   box-shadow: 6px 6px 4px 2px #bfb5af;
 }
 
-#modal{
-  display:none;
+#modal {
+  display: none;
 }
 
 .container {
@@ -43,23 +54,16 @@ img {
   margin-top: 10rem;
 }
 
+#options,
+#restrictionspage,
+#ingredientspage {
+  text-align: left !important;
+}
+
 #options {
   display: none;
   opacity: 0;
 }
-
-/* .caritemwrapper{
-background-color: #F1E8B8;
-}
-
-.caritemwrapper:hover img{
-opacity: 0.5;
-transition: .5s;
-} */
-/* 
-#optionswrap {
-  padding: 2em;
-} */
 
 #restrictionspage {
   display: none;
@@ -69,8 +73,7 @@ transition: .5s;
   display: none;
 }
 
-
-#carousel{
+#carousel {
   display: none;
 }
 
@@ -84,7 +87,9 @@ hr {
   margin-bottom: 2em;
 }
 
-
+input {
+  position: absolute;
+}
 
 span {
   font-size: 2.4rem !important;
@@ -103,91 +108,87 @@ body {
   text-align: center;
   color: #678164;
 }
-/* p {
-  margin: 2.2rem 0rem;
-} */
 
 a {
   background-color: #e2665e !important;
 }
 
-
-a.carousel-item{
+a.carousel-item {
   background-color: #678164 !important;
 }
-
 
 nav {
   /* background-color: #2E0F15; */
   color: #2e0f15;
 }
 
-
 /* computer */
-@media all and (min-width: 1024px) and (max-width: 1280px) { 
-
-
+@media all and (min-width: 1024px) and (max-width: 1140px) {
+  h2 {
+    font-size: 2.5rem !important;
+  }
+  span {
+    font-size: 2rem !important;
+  }
 }
-
 
 /* tablet landscape and smaller */
 @media all and (min-width: 768px) and (max-width: 1024px) {
-  h2, span{
-    font-size: 2.75rem !important;
+  h2 {
+    font-size: 2.25rem !important;
   }
+  span {
+    font-size: 1.75rem !important;
+  }
+}
 
- }
-
-
- /* tablet */
+/* tablet */
 @media all and (min-width: 480px) and (max-width: 768px) {
-
-  h2, span{
-    font-size: 3.5rem !important;
+  h2 {
+    font-size: 2rem !important;
+  }
+  span {
+    font-size: 1.5rem !important;
   }
 
-  .container{
+  .container {
     margin-top: 10rem;
   }
-  span{
+
+  span {
     margin-top: 3%;
   }
- }
+}
 
- /* Phone landscape and smaller */
+/* Phone landscape and smaller */
 @media all and (max-width: 480px) {
   #restrictionspage {
     margin-top: 0;
   }
-    .dietOption {
-    margin-top: .75rem; 
+  .dietOption {
+    margin-top: 0.75rem;
     display: block;
   }
-    h2, span{
-      font-size: 2rem !important;
-    }
-    
-    span{
-      margin-top: 2%;
-    }
- }
-
-/* 
-@media screen and (max-width: 725px) {
-	#restrictionspage {
-	margin-top: 0;
-}
-	.dietOption {
-	margin-top: .75rem; 
-	display: block;
-}
-  h2{
-    font-size: 3rem;
+  h2 {
+    font-size: 1.75rem !important;
   }
-};
-
-@media screen and (max-width: 360px) {
-  h2{
-    font-size: 2rem;
+  span {
+    font-size: 1.25rem !important;
   }
-} */
+
+  h1 {
+    font-size: 2rem !important;
+  }
+  h4{
+    font-size: 1.1rem;
+  }
+
+  span {
+    margin-top: 2%;
+  }
+
+  .container {
+    position: absolute;
+    bottom: 15%;
+  }
+}
