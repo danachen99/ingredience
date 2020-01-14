@@ -15,15 +15,15 @@
 <body background="../project1/assets/brooke-lark-08bOYnH_r_E-unsplash_shrunker.jpg">
     <div class="container" id="landing">
       <div class="row">
-        <div class="col  offset-l5 m5 offset-m7 s5 offset-s7">
+        <div class="col l7 offset-l5 m5 offset-m7 s5 offset-s7">
           <h1 id="appname">Ingredience</h1>
         </div>
       </div>
         <div class="row">
           <div class="col l7 offset-l5 m5 offset-m7 s5 offset-s7">
-            <h3>
+            <h2>
               Make your kitchen work for you.
-            </h3>
+            </h2>
           </div>
         </div>
         <div class="row">
@@ -43,24 +43,60 @@
               <hr />
               <form action="#">
                 <div class="row">
-                  <label class="dietoption">
-                    <input type="checkbox" id="check" />
-                    <span>Shellfish</span>
-                  </label>
-                  <label class="dietoption">
-                    <input type="checkbox" id="check" />
-                    <span>Gluten</span>
-                  </label>
+                  <div class="checkspan">
+                    <label class="dietoption">
+                      <input type="checkbox" id="check" />
+                      <span>Shellfish</span>
+                    </label>
+                  </div>
+                  <div class="checkspan">
+                    <label class="dietoption">
+                      <input type="checkbox" id="check" />
+                      <span>Gluten</span>
+                    </label>
+                  </div>
                 </div>
                 <div class="row">
-                  <label class="dietoption">
-                    <input type="checkbox" id="check" />
-                    <span>Dairy</span>
-                  </label>
-                  <label class="dietoption">
-                    <input type="checkbox" id="check" />
-                    <span>Peanuts</span>
-                  </label>
+                  <div class="checkspan">
+                    <label class="dietoption">
+                      <input type="checkbox" id="check" />
+                      <span>Dairy</span>
+                    </label>
+                  </div>
+                  <div class="checkspan">
+                    <label class="dietoption">
+                      <input type="checkbox" id="check" />
+                      <span>Peanuts</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="checkspan">
+                    <label class="dietoption">
+                      <input type="checkbox" id="check" />
+                      <span>Soy</span>
+                    </label>
+                  </div>
+                  <div class="checkspan">
+                    <label class="dietoption">
+                      <input type="checkbox" id="check" />
+                      <span>Sulfite</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="checkspan">
+                    <label class="dietoption">
+                      <input type="checkbox" id="check" />
+                      <span>Egg</span>
+                    </label>
+                  </div>
+                  <div class="checkspan">
+                    <label class="dietoption">
+                      <input type="checkbox" id="check" />
+                      <span>Seafood</span>
+                    </label>
+                  </div>
                 </div>
               </form>
               <a
@@ -75,10 +111,7 @@
       <div class="container" id="restrictionspage">
         <div class="row">
           <div class="col l6 offset-l6 m6 offset-m6 s6 offset-s6">
-            <h3>Great, we'll be sure to omit anything that has those items.</h3>
-          </div>
-          <div class="col l6 offset-l6 m6 offset-m6 s6 offset-s6">
-            <h3>Next, do you adhere to any of the below diets?</h3>
+            <h2>Next, do you adhere to any of the below diets?</h2>
             <hr />
           </div>
           <div class="col l6 offset-l6 m6 offset-m6 s6 offset-s6">
@@ -86,24 +119,32 @@
               <div class="col s12 m12">
                 <form action="#">
                   <div class="row">
-                    <label class="dietoption">
-                      <input type="radio" name="dietcheck" />
-                      <span>Vegan</span>
-                    </label>
-                    <label class="dietoption">
-                      <input type="radio" name="dietcheck" />
-                      <span>Vegetarian</span>
-                    </label>
+                    <div class="checkspan">
+                      <label class="dietoption">
+                        <input type="radio" name="dietcheck" />
+                        <span>Vegan</span>
+                      </label>
+                    </div>
+                    <div class="checkspan">
+                      <label class="dietoption">
+                        <input type="radio" name="dietcheck" />
+                        <span>Vegetarian</span>
+                      </label>
+                    </div>
                   </div>
                   <div class="row">
-                    <label class="dietoption">
-                      <input type="radio" name="dietcheck" />
-                      <span>Keto</span>
-                    </label>
-                    <label class="dietoption">
-                      <input type="radio" name="dietcheck" />
-                      <span>Paleo</span>
-                    </label>
+                    <div class="checkspan">
+                      <label class="dietoption">
+                        <input type="radio" name="dietcheck" />
+                        <span>Keto</span>
+                      </label>
+                    </div>
+                    <div class="checkspan">
+                      <label class="dietoption">
+                        <input type="radio" name="dietcheck" />
+                        <span>Paleo</span>
+                      </label>
+                    </div>
                   </div>
                 </form>
                 <a
@@ -119,7 +160,7 @@
         <div class="row">
           <div class="col l6 offset-l6 m6 offset-m6 s6 offset-s6">
             <h2>
-              Okay! Lastly, let's add some ingredients. Add as many as you want!
+              Lastly, let's add some ingredients. Add as many as you want!
             </h2>
             <div class="chips"></div>
             <a class="waves-effect waves-light btn-large scale-transition" id="submitingredients">Get Recipes</a>
@@ -151,14 +192,13 @@
               <h4>
               Ingredients
             </h4>
-            <div class="ingredients-list"></div>
+            <div class="ingredients-list"git></div>
           </div>
             <div class="col l6 m6 s6" id="instructions">
               <h4>
               Instructions
             </h4>
             <ol class="instructions-list">
-
             </ol>
           </div>
           </div>
