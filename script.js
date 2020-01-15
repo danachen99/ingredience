@@ -210,30 +210,3 @@ $("document").ready(function() {
         var ingredients = inpt.value;
         checkIntolerances(ingredients);
     }
-
-    $("#get-drink").on("click", getRandomCocktail)
-    function getRandomCocktail() {
-        $("#ingredients").empty();
-        $("#ingredients-list").empty();
-        $("#instructions").empty();
-        $("#instructions-list").empty();
-        $("#modalheader").empty();
-        var queryURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function(response) {
-            console.log(response.drinks[0]);
-            $("#modalheader").append(response.drinks[0].strDrink);
-            $("#instructions").append("<img src='" + response.drinks[0].strDrinkThumb + "' id='drink-img'> ");
-            for (var i = 1; i < 15; i++) {
-                var drinkIngredients = response.drinks[0]["strIngredient" + i];
-                var measurements = response.drinks[0]["strMeasure" + i];
-                if ((drinkIngredients != null) && (measurements != null)) {
-                    console.log(measurements + " " + drinkIngredients)
-                    $("#ingredients").append("<p>" + measurements + " " + drinkIngredients + "</p>");
-                }
-            }
-        });
-    }
-});
