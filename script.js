@@ -66,7 +66,7 @@ $("document").ready(function() {
     });
 
     $(document).on("click", ".modal-trigger", function() {
-        $('#ingredients').empty();
+        // $(this).empty();
         var recipeID = $(this).attr("id");
         $("#modalheader").text($(this)[0].text);
         getIngredients(recipeID);
@@ -151,6 +151,10 @@ $("document").ready(function() {
             }
         });
     }
+
+    $(".modal-close").on('close', function(){
+        (".modal-content").empty();
+    })
 
     function getInstructions(recipeID) {
         var recipeUrl = "https://api.spoonacular.com/recipes/" + recipeID + "/analyzedInstructions?";
